@@ -1,20 +1,55 @@
-# 人工智能与类脑计算 HTML 思维导图复习包
+# AI Course Morandi Review Map
 
-生成时间：2026-05-16 02:57:46
+An interactive Morandi-blue HTML review website for the course **Artificial Intelligence and Brain-inspired Computing**.
 
-打开 `index.html` 或 `overview.html`。总览页已联通到每个 PPT 详细思维导图页面。
+This project organizes the course content into printable, chapter-level knowledge maps, including core concepts, formulas, algorithm flows, teacher-emphasized points, common mistakes, and exam-oriented review routes.
 
-字体规则：
-- 中文优先宋体；
-- 英文和数字用 Times New Roman；
-- 页面内脚本会把普通文本中的英文和数字自动包裹为 Times New Roman。
+## Features
 
-打印建议：浏览器打印选择 A3 横向，开启背景图形。A4 打印建议缩放到 60%—75%。
+- Full-course overview knowledge map
+- Chapter-level HTML mind maps
+- Morandi blue visual style
+- Printable review pages
+- Searchable nodes inside each chapter page
+- JSON data structure for each chapter
+- Markdown version of each mind map
+- Linked navigation between overview and chapter pages
 
-文件：
-- overview.html
-- ai_course_morandi_blue_knowledge_map_html.html
-- chapters/*.html
-- assets/style.css
-- assets/app.js
-- assets/course_data.json
+## Course Modules Covered
+
+- Introduction to AI and Intelligent Agents
+- Machine Learning I–III
+- Markov Decision Processes
+- Reinforcement Learning
+- Constraint Satisfaction Problems
+- Bayesian Networks and HMMs
+- Logic and Resolution
+- Course recording / teacher-emphasis summary
+
+## File Structure
+
+```text
+ai_course_html_package/
+  index.html
+  overview.html
+  ai_course_morandi_blue_knowledge_map_html.html
+  README.md
+  chapters/
+    01_intro.html
+    02_ml1.html
+    03_ml2.html
+    04_ml3.html
+    05_mdp1.html
+    06_mdp_program.html
+    07_rl.html
+    08_csp1.html
+    09_csp2.html
+    10_bn1.html
+    11_bn2.html
+    12_logic1.html
+    13_logic2.html
+    14_recording_notes.html
+  assets/
+    style.css
+    app.js
+    course_data.json
