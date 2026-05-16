@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 3：Machine Learning II｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="02_ml1.html">← 上一章</a><a href="04_ml3.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 03 · 机器学习 II</p><h1>Lecture 3：Machine Learning II</h1><p class="subtitle">本章讨论表达能力：特征模板、稀疏表示、假设类、非线性特征、神经网络和梯度计算。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 3 - Machine learning II.pdf</span></div><div class="meta-item"><b>所属模块</b><span>机器学习 II</span></div><div class="meta-item"><b>老师重点</b><span>神经网络不是凭空强，而是多层非线性函数组合；表达能力强也要考虑泛化。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>机器学习 II</h2><p>本章讨论表达能力：特征模板、稀疏表示、假设类、非线性特征、神经网络和梯度计算。</p></div><div><p><b>老师重点</b></p><p>神经网络不是凭空强，而是多层非线性函数组合；表达能力强也要考虑泛化。</p></div></aside><div class="branches"><article class="branch searchable"><h3>特征模板与稀疏表示</h3><p class="summary">用规则批量生成特征，处理高维离散数据。</p><div class="node-grid"><div class="node searchable"><b>特征模板</b><small>定义如何从输入自动生成一批相似特征。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>稀疏特征</b><small>维度很高但每个样本只激活少量维度。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>离散符号特征</b><small>文本、类别等常用 one-hot 或词袋表示。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>特征组合</b><small>把简单信号组合成更有区分力的特征。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>假设类与表达能力</h3><p class="summary">模型能否学到目标函数，取决于假设空间是否足够。</p><div class="node-grid"><div class="node searchable"><b>假设类</b><small>模型允许选择的函数集合。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>表达能力</b><small>假设类表示复杂模式的能力。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>线性限制</b><small>原始空间线性不可分时简单线性模型失败。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div><div class="node searchable"><b>非线性映射</b><small>映射到新特征空间后再线性预测。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>神经网络</h3><p class="summary">多层线性变换加非线性激活形成复杂函数。</p><div class="node-grid"><div class="node searchable"><b>神经元</b><small>对输入加权求和并通过激活函数输出。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>隐藏层</b><small>学习中间表示，不直接等同于标签。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>非线性激活</b><small>没有非线性，多层线性仍等价于一层线性。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>前向传播</b><small>输入依次经过各层得到预测。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>梯度计算与反向传播</h3><p class="summary">复杂模型仍通过损失对参数求梯度来学习。</p><div class="node-grid"><div class="node searchable"><b>链式法则</b><small>多层函数梯度由局部梯度相乘得到。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>反向传播</b><small>从损失层向前逐层计算梯度。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>局部梯度</b><small>每层只需本层输入输出关系的导数。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>参数更新</b><small>仍可使用 SGD 类方法。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 特征模板与稀疏表示</h3><p>用规则批量生成特征，处理高维离散数据。</p>
+<h4>关键概念</h4><ul><li><b>特征模板</b>：定义如何从输入自动生成一批相似特征。</li><li><b>稀疏特征</b>：维度很高但每个样本只激活少量维度。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>“前一个词=not 且当前词=good”可作为组合特征。</li></ul>
+<h4>老师强调点</h4><ul><li>特征模板决定模型能看到哪些模式。</li></ul>
+<h4>易错点</h4><ul><li>易错：稀疏不是信息少，而是高维中少量激活。</li></ul>
+<h4>考试可能考法</h4><ul><li>设计特征模板。</li></ul></article><article class="struct-card searchable"><h3>2. 假设类与表达能力</h3><p>模型能否学到目标函数，取决于假设空间是否足够。</p>
+<h4>关键概念</h4><ul><li><b>假设类</b>：模型允许选择的函数集合。</li><li><b>表达能力</b>：假设类表示复杂模式的能力。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>XOR 问题需非线性特征或神经网络。</li></ul>
+<h4>老师强调点</h4><ul><li>表达能力不足会造成近似误差。</li></ul>
+<h4>易错点</h4><ul><li>易错：表达能力越强不一定测试越好。</li></ul>
+<h4>考试可能考法</h4><ul><li>比较线性与非线性模型。</li></ul></article><article class="struct-card searchable"><h3>3. 神经网络</h3><p>多层线性变换加非线性激活形成复杂函数。</p>
+<h4>关键概念</h4><ul><li><b>神经元</b>：对输入加权求和并通过激活函数输出。</li><li><b>隐藏层</b>：学习中间表示，不直接等同于标签。</li><li><b>非线性激活</b>：没有非线性，多层线性仍等价于一层线性。</li></ul>
+<h4>公式/规则</h4><ul><li>h=σ(w·x+b)</li></ul>
+<h4>典型例子</h4><ul><li>图像网络逐层形成边缘、纹理、形状等表示。</li></ul>
+<h4>老师强调点</h4><ul><li>非线性激活是神经网络表达力的关键。</li></ul>
+<h4>易错点</h4><ul><li>易错：很多线性层堆叠仍是线性。</li></ul>
+<h4>考试可能考法</h4><ul><li>手算简单神经元输出。</li></ul></article><article class="struct-card searchable"><h3>4. 梯度计算与反向传播</h3><p>复杂模型仍通过损失对参数求梯度来学习。</p>
+<h4>关键概念</h4><ul><li><b>局部梯度</b>：每层只需本层输入输出关系的导数。</li></ul>
+<h4>公式/规则</h4><ul><li>dL/dw = dL/dh · dh/dw</li></ul>
+<h4>典型例子</h4><ul><li>输出层误差通过链式法则传回隐藏层。</li></ul>
+<h4>老师强调点</h4><ul><li>反向传播本质是高效计算梯度。</li></ul>
+<h4>易错点</h4><ul><li>易错：反向传播不是独立优化目标。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释链式法则在神经网络中的作用。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>神经网络</h3><span class="formula">h=σ(w·x+b)</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>梯度计算与反向传播</h3><span class="formula">dL/dw = dL/dh · dh/dw</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>特征模板</li><li>稀疏特征</li><li>假设类/表达能力</li><li>神经网络非线性</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>比较线性/非线性特征</li><li>画一层神经网络</li><li>解释反向传播</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>特征模板、稀疏特征、假设类、激活函数</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>设计特征模板、神经元输出手算</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>深层表示学习直觉</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>02 机器学习 I</b><a href="02_ml1.html">Lecture 2：Machine Learning I</a></div><div class="relation-card"><b>04 机器学习 III</b><a href="04_ml3.html">Lecture 4：Machine Learning III</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 3：Machine Learning II&quot;,
+  &quot;material&quot;: &quot;Lecture 3 - Machine learning II.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章讨论表达能力：特征模板、稀疏表示、假设类、非线性特征、神经网络和梯度计算。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;特征模板与稀疏表示&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用规则批量生成特征，处理高维离散数据。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;特征模板&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;定义如何从输入自动生成一批相似特征。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;稀疏特征&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;维度很高但每个样本只激活少量维度。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;离散符号特征&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;文本、类别等常用 one-hot 或词袋表示。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;特征组合&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;把简单信号组合成更有区分力的特征。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;“前一个词=not 且当前词=good”可作为组合特征。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;特征模板决定模型能看到哪些模式。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：稀疏不是信息少，而是高维中少量激活。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;设计特征模板。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;假设类与表达能力&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;模型能否学到目标函数，取决于假设空间是否足够。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;假设类&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;模型允许选择的函数集合。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;表达能力&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;假设类表示复杂模式的能力。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;线性限制&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;原始空间线性不可分时简单线性模型失败。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;非线性映射&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;映射到新特征空间后再线性预测。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;XOR 问题需非线性特征或神经网络。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;表达能力不足会造成近似误差。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：表达能力越强不一定测试越好。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;比较线性与非线性模型。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;神经网络&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;多层线性变换加非线性激活形成复杂函数。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;神经元&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;对输入加权求和并通过激活函数输出。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;隐藏层&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;学习中间表示，不直接等同于标签。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;非线性激活&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;没有非线性，多层线性仍等价于一层线性。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;前向传播&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;输入依次经过各层得到预测。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;h=σ(w·x+b)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;图像网络逐层形成边缘、纹理、形状等表示。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;非线性激活是神经网络表达力的关键。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：很多线性层堆叠仍是线性。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;手算简单神经元输出。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;梯度计算与反向传播&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;复杂模型仍通过损失对参数求梯度来学习。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;链式法则&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;多层函数梯度由局部梯度相乘得到。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;反向传播&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;从损失层向前逐层计算梯度。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;局部梯度&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;每层只需本层输入输出关系的导数。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;参数更新&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;仍可使用 SGD 类方法。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;dL/dw = dL/dh · dh/dw&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;输出层误差通过链式法则传回隐藏层。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;反向传播本质是高效计算梯度。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：反向传播不是独立优化目标。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释链式法则在神经网络中的作用。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;特征模板&quot;,
+      &quot;稀疏特征&quot;,
+      &quot;假设类/表达能力&quot;,
+      &quot;神经网络非线性&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;比较线性/非线性特征&quot;,
+      &quot;画一层神经网络&quot;,
+      &quot;解释反向传播&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;特征模板、稀疏特征、假设类、激活函数&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;设计特征模板、神经元输出手算&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;深层表示学习直觉&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 3：Machine Learning II
+
+本章核心主题：本章讨论表达能力：特征模板、稀疏表示、假设类、非线性特征、神经网络和梯度计算。
+
+老师重点：神经网络不是凭空强，而是多层非线性函数组合；表达能力强也要考虑泛化。
+
+## 1. 特征模板与稀疏表示
+
+### 1.1 二级知识点
+
+- 核心概念：用规则批量生成特征，处理高维离散数据。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：“前一个词=not 且当前词=good”可作为组合特征。
+- 老师重点：特征模板决定模型能看到哪些模式。
+- 易错点：易错：稀疏不是信息少，而是高维中少量激活。
+- 考点：设计特征模板。
+
+### 1.2 特征模板
+
+- 类型：核心概念
+- 说明：定义如何从输入自动生成一批相似特征。
+
+### 1.3 稀疏特征
+
+- 类型：核心概念
+- 说明：维度很高但每个样本只激活少量维度。
+
+### 1.4 离散符号特征
+
+- 类型：图示/流程
+- 说明：文本、类别等常用 one-hot 或词袋表示。
+
+### 1.5 特征组合
+
+- 类型：图示/流程
+- 说明：把简单信号组合成更有区分力的特征。
+
+## 2. 假设类与表达能力
+
+### 2.1 二级知识点
+
+- 核心概念：模型能否学到目标函数，取决于假设空间是否足够。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：XOR 问题需非线性特征或神经网络。
+- 老师重点：表达能力不足会造成近似误差。
+- 易错点：易错：表达能力越强不一定测试越好。
+- 考点：比较线性与非线性模型。
+
+### 2.2 假设类
+
+- 类型：核心概念
+- 说明：模型允许选择的函数集合。
+
+### 2.3 表达能力
+
+- 类型：核心概念
+- 说明：假设类表示复杂模式的能力。
+
+### 2.4 线性限制
+
+- 类型：易错点
+- 说明：原始空间线性不可分时简单线性模型失败。
+
+### 2.5 非线性映射
+
+- 类型：图示/流程
+- 说明：映射到新特征空间后再线性预测。
+
+## 3. 神经网络
+
+### 3.1 二级知识点
+
+- 核心概念：多层线性变换加非线性激活形成复杂函数。
+- 公式/规则：h=σ(w·x+b)
+- 典型例子：图像网络逐层形成边缘、纹理、形状等表示。
+- 老师重点：非线性激活是神经网络表达力的关键。
+- 易错点：易错：很多线性层堆叠仍是线性。
+- 考点：手算简单神经元输出。
+
+### 3.2 神经元
+
+- 类型：核心概念
+- 说明：对输入加权求和并通过激活函数输出。
+
+### 3.3 隐藏层
+
+- 类型：核心概念
+- 说明：学习中间表示，不直接等同于标签。
+
+### 3.4 非线性激活
+
+- 类型：核心概念
+- 说明：没有非线性，多层线性仍等价于一层线性。
+
+### 3.5 前向传播
+
+- 类型：图示/流程
+- 说明：输入依次经过各层得到预测。
+
+## 4. 梯度计算与反向传播
+
+### 4.1 二级知识点
+
+- 核心概念：复杂模型仍通过损失对参数求梯度来学习。
+- 公式/规则：dL/dw = dL/dh · dh/dw
+- 典型例子：输出层误差通过链式法则传回隐藏层。
+- 老师重点：反向传播本质是高效计算梯度。
+- 易错点：易错：反向传播不是独立优化目标。
+- 考点：解释链式法则在神经网络中的作用。
+
+### 4.2 链式法则
+
+- 类型：公式/推导
+- 说明：多层函数梯度由局部梯度相乘得到。
+
+### 4.3 反向传播
+
+- 类型：图示/流程
+- 说明：从损失层向前逐层计算梯度。
+
+### 4.4 局部梯度
+
+- 类型：核心概念
+- 说明：每层只需本层输入输出关系的导数。
+
+### 4.5 参数更新
+
+- 类型：公式/推导
+- 说明：仍可使用 SGD 类方法。
+
+## 复习路线
+
+- 20 分钟：特征模板；稀疏特征；假设类/表达能力；神经网络非线性
+- 1 小时：比较线性/非线性特征；画一层神经网络；解释反向传播
+- 必背：特征模板、稀疏特征、假设类、激活函数
+- 需要做题：设计特征模板、神经元输出手算
+- 理解即可：深层表示学习直觉</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 3：Machine Learning II</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 7 Program：MDPs Program I｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="05_mdp1.html">← 上一章</a><a href="07_rl.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 06 · MDP 程序实现</p><h1>Lecture 7 Program：MDPs Program I</h1><p class="subtitle">本章把 MDP 理论落到 Python 程序：状态空间、动作、转移奖励函数、折扣因子、价值迭代和策略读取。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 7 - MDPs Program I.pdf.pdf</span></div><div class="meta-item"><b>所属模块</b><span>MDP 程序实现</span></div><div class="meta-item"><b>老师重点</b><span>实验程序是理解 MDP 的抓手，要能把代码变量和 S/A/T/R/γ 对应。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>MDP 程序实现</h2><p>本章把 MDP 理论落到 Python 程序：状态空间、动作、转移奖励函数、折扣因子、价值迭代和策略读取。</p></div><div><p><b>老师重点</b></p><p>实验程序是理解 MDP 的抓手，要能把代码变量和 S/A/T/R/γ 对应。</p></div></aside><div class="branches"><article class="branch searchable"><h3>程序结构与 MDP 对应</h3><p class="summary">把每个函数映射回 MDP 五元组。</p><div class="node-grid"><div class="node searchable"><b>states()</b><small>返回状态集合 S。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>actions(state)</b><small>返回当前状态可选动作。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>succProbReward</b><small>给出下一状态、概率和奖励，是 T/R 接口。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>discount</b><small>程序中的折扣因子 γ。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>穿越火山 MDP</h3><p class="summary">用网格任务理解风险、奖励和策略。</p><div class="node-grid"><div class="node searchable"><b>起点</b><small>智能体开始决策的位置。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>终止状态</b><small>任务结束位置。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>动作集合</b><small>上下左右等移动方式。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>奖励设计</b><small>奖励决定策略偏好。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div></div></article><article class="branch searchable"><h3>价值迭代代码流程</h3><p class="summary">循环更新 V 值直到收敛。</p><div class="node-grid"><div class="node searchable"><b>初始化 V</b><small>通常设为 0。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>遍历状态</b><small>每轮对所有状态计算新价值。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>计算 Q</b><small>累加所有下一状态期望回报。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>取最大值</b><small>maxQ 对应 V=max Q。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article><article class="branch searchable"><h3>策略读取</h3><p class="summary">从价值函数读出最优行动。</p><div class="node-grid"><div class="node searchable"><b>getQ</b><small>根据当前 V 计算 Q。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>getAction</b><small>选择 Q 最大行动。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>argmax</b><small>π(s)=argmax_a Q(s,a)。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>参数实验</b><small>观察 γ 或 reward 改变对策略影响。</small><div class="tag-row"><span class="tag exam">考点</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 程序结构与 MDP 对应</h3><p>把每个函数映射回 MDP 五元组。</p>
+<h4>关键概念</h4><ul><li><b>succProbReward</b>：给出下一状态、概率和奖励，是 T/R 接口。</li><li><b>discount</b>：程序中的折扣因子 γ。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>succProbReward 返回多个 nextState, prob, reward。</li></ul>
+<h4>老师强调点</h4><ul><li>代码变量必须回到 MDP 语义。</li></ul>
+<h4>易错点</h4><ul><li>易错：succProbReward 不只是下一状态。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释代码与五元组对应。</li></ul></article><article class="struct-card searchable"><h3>2. 穿越火山 MDP</h3><p>用网格任务理解风险、奖励和策略。</p>
+<h4>关键概念</h4><ul><li><b>起点</b>：智能体开始决策的位置。</li><li><b>终止状态</b>：任务结束位置。</li><li><b>动作集合</b>：上下左右等移动方式。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>提高掉入火山惩罚，策略更可能绕远。</li></ul>
+<h4>老师强调点</h4><ul><li>奖励改变会改变策略。</li></ul>
+<h4>易错点</h4><ul><li>易错：只看输出不解释策略原因。</li></ul>
+<h4>考试可能考法</h4><ul><li>修改 reward/γ 后预测策略。</li></ul></article><article class="struct-card searchable"><h3>3. 价值迭代代码流程</h3><p>循环更新 V 值直到收敛。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>q += prob*(reward + discount*V[newState])</li></ul>
+<h4>典型例子</h4><ul><li>代码中的 maxQ 就是 Bellman 最优更新。</li></ul>
+<h4>老师强调点</h4><ul><li>程序是价值迭代公式的展开。</li></ul>
+<h4>易错点</h4><ul><li>易错：一轮循环不等于最终策略。</li></ul>
+<h4>考试可能考法</h4><ul><li>读代码解释价值迭代。</li></ul></article><article class="struct-card searchable"><h3>4. 策略读取</h3><p>从价值函数读出最优行动。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>π(s)=argmax_a Q(s,a)</li></ul>
+<h4>典型例子</h4><ul><li>降低 γ 会让策略更短视。</li></ul>
+<h4>老师强调点</h4><ul><li>策略来自 Q 值比较。</li></ul>
+<h4>易错点</h4><ul><li>易错：最优行动不是直接由 reward 最大决定，还看未来价值。</li></ul>
+<h4>考试可能考法</h4><ul><li>根据 Q 值读策略。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>价值迭代代码流程</h3><span class="formula">q += prob*(reward + discount*V[newState])</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>策略读取</h3><span class="formula">π(s)=argmax_a Q(s,a)</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>states/actions/succProbReward</li><li>discount</li><li>valueIteration</li><li>getAction</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>标注代码变量</li><li>手算一个 Q</li><li>解释参数影响</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>succProbReward、discount、argmax</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>读代码、改参数预测策略</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>程序如何对应理论</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>05 MDP I</b><a href="05_mdp1.html">Lecture 7：MDPs I</a></div><div class="relation-card"><b>07 强化学习</b><a href="07_rl.html">Lecture 8：MDPs II / Reinforcement Learning</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 7 Program：MDPs Program I&quot;,
+  &quot;material&quot;: &quot;Lecture 7 - MDPs Program I.pdf.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章把 MDP 理论落到 Python 程序：状态空间、动作、转移奖励函数、折扣因子、价值迭代和策略读取。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;程序结构与 MDP 对应&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;把每个函数映射回 MDP 五元组。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;states()&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;返回状态集合 S。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;actions(state)&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;返回当前状态可选动作。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;succProbReward&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;给出下一状态、概率和奖励，是 T/R 接口。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;discount&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;程序中的折扣因子 γ。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;succProbReward 返回多个 nextState, prob, reward。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;代码变量必须回到 MDP 语义。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：succProbReward 不只是下一状态。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释代码与五元组对应。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;穿越火山 MDP&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用网格任务理解风险、奖励和策略。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;起点&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;智能体开始决策的位置。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;终止状态&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;任务结束位置。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;动作集合&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;上下左右等移动方式。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;奖励设计&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;奖励决定策略偏好。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;提高掉入火山惩罚，策略更可能绕远。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;奖励改变会改变策略。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：只看输出不解释策略原因。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;修改 reward/γ 后预测策略。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;价值迭代代码流程&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;循环更新 V 值直到收敛。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;初始化 V&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;通常设为 0。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;遍历状态&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;每轮对所有状态计算新价值。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;计算 Q&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;累加所有下一状态期望回报。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;取最大值&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;maxQ 对应 V=max Q。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;q += prob*(reward + discount*V[newState])&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;代码中的 maxQ 就是 Bellman 最优更新。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;程序是价值迭代公式的展开。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：一轮循环不等于最终策略。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;读代码解释价值迭代。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;策略读取&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;从价值函数读出最优行动。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;getQ&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;根据当前 V 计算 Q。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;getAction&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;选择 Q 最大行动。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;argmax&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;π(s)=argmax_a Q(s,a)。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;参数实验&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;观察 γ 或 reward 改变对策略影响。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;π(s)=argmax_a Q(s,a)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;降低 γ 会让策略更短视。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;策略来自 Q 值比较。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：最优行动不是直接由 reward 最大决定，还看未来价值。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;根据 Q 值读策略。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;states/actions/succProbReward&quot;,
+      &quot;discount&quot;,
+      &quot;valueIteration&quot;,
+      &quot;getAction&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;标注代码变量&quot;,
+      &quot;手算一个 Q&quot;,
+      &quot;解释参数影响&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;succProbReward、discount、argmax&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;读代码、改参数预测策略&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;程序如何对应理论&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 7 Program：MDPs Program I
+
+本章核心主题：本章把 MDP 理论落到 Python 程序：状态空间、动作、转移奖励函数、折扣因子、价值迭代和策略读取。
+
+老师重点：实验程序是理解 MDP 的抓手，要能把代码变量和 S/A/T/R/γ 对应。
+
+## 1. 程序结构与 MDP 对应
+
+### 1.1 二级知识点
+
+- 核心概念：把每个函数映射回 MDP 五元组。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：succProbReward 返回多个 nextState, prob, reward。
+- 老师重点：代码变量必须回到 MDP 语义。
+- 易错点：易错：succProbReward 不只是下一状态。
+- 考点：解释代码与五元组对应。
+
+### 1.2 states()
+
+- 类型：图示/流程
+- 说明：返回状态集合 S。
+
+### 1.3 actions(state)
+
+- 类型：图示/流程
+- 说明：返回当前状态可选动作。
+
+### 1.4 succProbReward
+
+- 类型：核心概念
+- 说明：给出下一状态、概率和奖励，是 T/R 接口。
+
+### 1.5 discount
+
+- 类型：核心概念
+- 说明：程序中的折扣因子 γ。
+
+## 2. 穿越火山 MDP
+
+### 2.1 二级知识点
+
+- 核心概念：用网格任务理解风险、奖励和策略。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：提高掉入火山惩罚，策略更可能绕远。
+- 老师重点：奖励改变会改变策略。
+- 易错点：易错：只看输出不解释策略原因。
+- 考点：修改 reward/γ 后预测策略。
+
+### 2.2 起点
+
+- 类型：核心概念
+- 说明：智能体开始决策的位置。
+
+### 2.3 终止状态
+
+- 类型：核心概念
+- 说明：任务结束位置。
+
+### 2.4 动作集合
+
+- 类型：核心概念
+- 说明：上下左右等移动方式。
+
+### 2.5 奖励设计
+
+- 类型：老师重点
+- 说明：奖励决定策略偏好。
+
+## 3. 价值迭代代码流程
+
+### 3.1 二级知识点
+
+- 核心概念：循环更新 V 值直到收敛。
+- 公式/规则：q += prob*(reward + discount*V[newState])
+- 典型例子：代码中的 maxQ 就是 Bellman 最优更新。
+- 老师重点：程序是价值迭代公式的展开。
+- 易错点：易错：一轮循环不等于最终策略。
+- 考点：读代码解释价值迭代。
+
+### 3.2 初始化 V
+
+- 类型：图示/流程
+- 说明：通常设为 0。
+
+### 3.3 遍历状态
+
+- 类型：图示/流程
+- 说明：每轮对所有状态计算新价值。
+
+### 3.4 计算 Q
+
+- 类型：公式/推导
+- 说明：累加所有下一状态期望回报。
+
+### 3.5 取最大值
+
+- 类型：公式/推导
+- 说明：maxQ 对应 V=max Q。
+
+## 4. 策略读取
+
+### 4.1 二级知识点
+
+- 核心概念：从价值函数读出最优行动。
+- 公式/规则：π(s)=argmax_a Q(s,a)
+- 典型例子：降低 γ 会让策略更短视。
+- 老师重点：策略来自 Q 值比较。
+- 易错点：易错：最优行动不是直接由 reward 最大决定，还看未来价值。
+- 考点：根据 Q 值读策略。
+
+### 4.2 getQ
+
+- 类型：图示/流程
+- 说明：根据当前 V 计算 Q。
+
+### 4.3 getAction
+
+- 类型：图示/流程
+- 说明：选择 Q 最大行动。
+
+### 4.4 argmax
+
+- 类型：公式/推导
+- 说明：π(s)=argmax_a Q(s,a)。
+
+### 4.5 参数实验
+
+- 类型：考点
+- 说明：观察 γ 或 reward 改变对策略影响。
+
+## 复习路线
+
+- 20 分钟：states/actions/succProbReward；discount；valueIteration；getAction
+- 1 小时：标注代码变量；手算一个 Q；解释参数影响
+- 必背：succProbReward、discount、argmax
+- 需要做题：读代码、改参数预测策略
+- 理解即可：程序如何对应理论</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 7 Program：MDPs Program I</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

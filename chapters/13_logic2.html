@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 17：Logic II｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="12_logic1.html">← 上一章</a><a href="14_recording_notes.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 13 · 逻辑 II</p><h1>Lecture 17：Logic II</h1><p class="subtitle">本章学习归结推理：把公式转 CNF，通过反证和 resolution 推出空子句，并初步进入一阶逻辑。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 17 - Logic II.pdf</span></div><div class="meta-item"><b>所属模块</b><span>逻辑 II</span></div><div class="meta-item"><b>老师重点</b><span>CNF 转换和归结是可操作考点；证明要按规则推出空子句。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>逻辑 II</h2><p>本章学习归结推理：把公式转 CNF，通过反证和 resolution 推出空子句，并初步进入一阶逻辑。</p></div><div><p><b>老师重点</b></p><p>CNF 转换和归结是可操作考点；证明要按规则推出空子句。</p></div></aside><div class="branches"><article class="branch searchable"><h3>归结推理思想</h3><p class="summary">用反证法把蕴涵问题变成不可满足性问题。</p><div class="node-grid"><div class="node searchable"><b>反证法</b><small>证明 KB⊨φ，转为证明 KB∧¬φ 不可满足。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>子句</b><small>若干文字的析取。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>互补文字</b><small>如 P 与 ¬P。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>空子句</b><small>表示矛盾，说明不可满足。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>CNF 合取范式</h3><p class="summary">归结算法要求公式转成子句集合。</p><div class="node-grid"><div class="node searchable"><b>消去蕴含</b><small>A→B 改写为 ¬A∨B。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>否定内移</b><small>用德摩根律把 ¬ 推到原子命题前。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>分配律</b><small>把 ∨ 分配到 ∧ 上。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>子句集合</b><small>CNF 可看成多个子句集合。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>Resolution 算法</h3><p class="summary">寻找互补文字生成新子句，直到空子句或无法继续。</p><div class="node-grid"><div class="node searchable"><b>选择子句</b><small>选两个含互补文字的子句。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>归结生成</b><small>删除互补文字，合并剩余文字。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>加入集合</b><small>新子句加入后继续。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>终止条件</b><small>空子句成功，无新子句则失败或不可证明。</small><div class="tag-row"><span class="tag exam">考点</span></div></div></div></article><article class="branch searchable"><h3>一阶逻辑</h3><p class="summary">能表达对象、属性、关系和量词。</p><div class="node-grid"><div class="node searchable"><b>对象</b><small>世界中的具体个体。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>谓词</b><small>描述对象属性或关系。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>量词</b><small>∀ 表示所有，∃ 表示存在。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>变量绑定</b><small>变量受哪个量词约束要看作用域。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 归结推理思想</h3><p>用反证法把蕴涵问题变成不可满足性问题。</p>
+<h4>关键概念</h4><ul><li><b>子句</b>：若干文字的析取。</li><li><b>互补文字</b>：如 P 与 ¬P。</li><li><b>空子句</b>：表示矛盾，说明不可满足。</li></ul>
+<h4>公式/规则</h4><ul><li>KB⊨φ ⇔ KB∧¬φ 不可满足</li></ul>
+<h4>典型例子</h4><ul><li>P∨Q 与 ¬P 可归结出 Q。</li></ul>
+<h4>老师强调点</h4><ul><li>推出空子句才表示反证成功。</li></ul>
+<h4>易错点</h4><ul><li>易错：没有空子句不能说归结成功。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释归结证明思路。</li></ul></article><article class="struct-card searchable"><h3>2. CNF 合取范式</h3><p>归结算法要求公式转成子句集合。</p>
+<h4>关键概念</h4><ul><li><b>子句集合</b>：CNF 可看成多个子句集合。</li></ul>
+<h4>公式/规则</h4><ul><li>CNF=(l1∨l2∨...)∧(m1∨m2∨...)</li></ul>
+<h4>典型例子</h4><ul><li>¬(A∧B)=¬A∨¬B。</li></ul>
+<h4>老师强调点</h4><ul><li>CNF 转换是考试可操作点。</li></ul>
+<h4>易错点</h4><ul><li>易错：CNF 是 AND of ORs，不是 DNF。</li></ul>
+<h4>考试可能考法</h4><ul><li>把公式转 CNF。</li></ul></article><article class="struct-card searchable"><h3>3. Resolution 算法</h3><p>寻找互补文字生成新子句，直到空子句或无法继续。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>(A∨B),(¬A∨C) ⟹ (B∨C)</li></ul>
+<h4>典型例子</h4><ul><li>互补文字 A 和 ¬A 相消。</li></ul>
+<h4>老师强调点</h4><ul><li>归结只能消互补文字。</li></ul>
+<h4>易错点</h4><ul><li>易错：不能随意删非互补文字。</li></ul>
+<h4>考试可能考法</h4><ul><li>做两步归结证明。</li></ul></article><article class="struct-card searchable"><h3>4. 一阶逻辑</h3><p>能表达对象、属性、关系和量词。</p>
+<h4>关键概念</h4><ul><li><b>对象</b>：世界中的具体个体。</li><li><b>谓词</b>：描述对象属性或关系。</li><li><b>量词</b>：∀ 表示所有，∃ 表示存在。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>∀x Human(x)→Mortal(x)。</li></ul>
+<h4>老师强调点</h4><ul><li>量词作用域容易出错。</li></ul>
+<h4>易错点</h4><ul><li>易错：∀ 与 ∃ 的顺序变化会改变含义。</li></ul>
+<h4>考试可能考法</h4><ul><li>判断量词范围和公式含义。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>归结推理思想</h3><span class="formula">KB⊨φ ⇔ KB∧¬φ 不可满足</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>CNF 合取范式</h3><span class="formula">CNF=(l1∨l2∨...)∧(m1∨m2∨...)</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>Resolution 算法</h3><span class="formula">(A∨B),(¬A∨C) ⟹ (B∨C)</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>CNF</li><li>互补文字</li><li>resolution</li><li>∀/∃</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>练 CNF</li><li>做归结</li><li>看量词作用域</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>KB∧¬φ、CNF、resolution、空子句</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>CNF 转换、归结证明、量词判断</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>一阶逻辑表达力</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>12 逻辑 I</b><a href="12_logic1.html">Lecture 16：Logic I</a></div><div class="relation-card"><b>08 CSP I</b><a href="08_csp1.html">Lecture 11：CSPs I</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 17：Logic II&quot;,
+  &quot;material&quot;: &quot;Lecture 17 - Logic II.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章学习归结推理：把公式转 CNF，通过反证和 resolution 推出空子句，并初步进入一阶逻辑。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;归结推理思想&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用反证法把蕴涵问题变成不可满足性问题。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;反证法&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;证明 KB⊨φ，转为证明 KB∧¬φ 不可满足。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;子句&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;若干文字的析取。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;互补文字&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;如 P 与 ¬P。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;空子句&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;表示矛盾，说明不可满足。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;KB⊨φ ⇔ KB∧¬φ 不可满足&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;P∨Q 与 ¬P 可归结出 Q。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;推出空子句才表示反证成功。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：没有空子句不能说归结成功。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释归结证明思路。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;CNF 合取范式&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;归结算法要求公式转成子句集合。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;消去蕴含&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;A→B 改写为 ¬A∨B。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;否定内移&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;用德摩根律把 ¬ 推到原子命题前。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;分配律&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;把 ∨ 分配到 ∧ 上。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;子句集合&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;CNF 可看成多个子句集合。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;CNF=(l1∨l2∨...)∧(m1∨m2∨...)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;¬(A∧B)=¬A∨¬B。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;CNF 转换是考试可操作点。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：CNF 是 AND of ORs，不是 DNF。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;把公式转 CNF。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Resolution 算法&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;寻找互补文字生成新子句，直到空子句或无法继续。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;选择子句&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;选两个含互补文字的子句。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;归结生成&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;删除互补文字，合并剩余文字。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;加入集合&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;新子句加入后继续。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;终止条件&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;空子句成功，无新子句则失败或不可证明。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;(A∨B),(¬A∨C) ⟹ (B∨C)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;互补文字 A 和 ¬A 相消。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;归结只能消互补文字。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：不能随意删非互补文字。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;做两步归结证明。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;一阶逻辑&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;能表达对象、属性、关系和量词。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;对象&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;世界中的具体个体。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;谓词&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;描述对象属性或关系。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;量词&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;∀ 表示所有，∃ 表示存在。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;变量绑定&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;变量受哪个量词约束要看作用域。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;∀x Human(x)→Mortal(x)。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;量词作用域容易出错。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：∀ 与 ∃ 的顺序变化会改变含义。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;判断量词范围和公式含义。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;CNF&quot;,
+      &quot;互补文字&quot;,
+      &quot;resolution&quot;,
+      &quot;∀/∃&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;练 CNF&quot;,
+      &quot;做归结&quot;,
+      &quot;看量词作用域&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;KB∧¬φ、CNF、resolution、空子句&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;CNF 转换、归结证明、量词判断&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;一阶逻辑表达力&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 17：Logic II
+
+本章核心主题：本章学习归结推理：把公式转 CNF，通过反证和 resolution 推出空子句，并初步进入一阶逻辑。
+
+老师重点：CNF 转换和归结是可操作考点；证明要按规则推出空子句。
+
+## 1. 归结推理思想
+
+### 1.1 二级知识点
+
+- 核心概念：用反证法把蕴涵问题变成不可满足性问题。
+- 公式/规则：KB⊨φ ⇔ KB∧¬φ 不可满足
+- 典型例子：P∨Q 与 ¬P 可归结出 Q。
+- 老师重点：推出空子句才表示反证成功。
+- 易错点：易错：没有空子句不能说归结成功。
+- 考点：解释归结证明思路。
+
+### 1.2 反证法
+
+- 类型：图示/流程
+- 说明：证明 KB⊨φ，转为证明 KB∧¬φ 不可满足。
+
+### 1.3 子句
+
+- 类型：核心概念
+- 说明：若干文字的析取。
+
+### 1.4 互补文字
+
+- 类型：核心概念
+- 说明：如 P 与 ¬P。
+
+### 1.5 空子句
+
+- 类型：核心概念
+- 说明：表示矛盾，说明不可满足。
+
+## 2. CNF 合取范式
+
+### 2.1 二级知识点
+
+- 核心概念：归结算法要求公式转成子句集合。
+- 公式/规则：CNF=(l1∨l2∨...)∧(m1∨m2∨...)
+- 典型例子：¬(A∧B)=¬A∨¬B。
+- 老师重点：CNF 转换是考试可操作点。
+- 易错点：易错：CNF 是 AND of ORs，不是 DNF。
+- 考点：把公式转 CNF。
+
+### 2.2 消去蕴含
+
+- 类型：图示/流程
+- 说明：A→B 改写为 ¬A∨B。
+
+### 2.3 否定内移
+
+- 类型：图示/流程
+- 说明：用德摩根律把 ¬ 推到原子命题前。
+
+### 2.4 分配律
+
+- 类型：图示/流程
+- 说明：把 ∨ 分配到 ∧ 上。
+
+### 2.5 子句集合
+
+- 类型：核心概念
+- 说明：CNF 可看成多个子句集合。
+
+## 3. Resolution 算法
+
+### 3.1 二级知识点
+
+- 核心概念：寻找互补文字生成新子句，直到空子句或无法继续。
+- 公式/规则：(A∨B),(¬A∨C) ⟹ (B∨C)
+- 典型例子：互补文字 A 和 ¬A 相消。
+- 老师重点：归结只能消互补文字。
+- 易错点：易错：不能随意删非互补文字。
+- 考点：做两步归结证明。
+
+### 3.2 选择子句
+
+- 类型：图示/流程
+- 说明：选两个含互补文字的子句。
+
+### 3.3 归结生成
+
+- 类型：公式/推导
+- 说明：删除互补文字，合并剩余文字。
+
+### 3.4 加入集合
+
+- 类型：图示/流程
+- 说明：新子句加入后继续。
+
+### 3.5 终止条件
+
+- 类型：考点
+- 说明：空子句成功，无新子句则失败或不可证明。
+
+## 4. 一阶逻辑
+
+### 4.1 二级知识点
+
+- 核心概念：能表达对象、属性、关系和量词。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：∀x Human(x)→Mortal(x)。
+- 老师重点：量词作用域容易出错。
+- 易错点：易错：∀ 与 ∃ 的顺序变化会改变含义。
+- 考点：判断量词范围和公式含义。
+
+### 4.2 对象
+
+- 类型：核心概念
+- 说明：世界中的具体个体。
+
+### 4.3 谓词
+
+- 类型：核心概念
+- 说明：描述对象属性或关系。
+
+### 4.4 量词
+
+- 类型：核心概念
+- 说明：∀ 表示所有，∃ 表示存在。
+
+### 4.5 变量绑定
+
+- 类型：易错点
+- 说明：变量受哪个量词约束要看作用域。
+
+## 复习路线
+
+- 20 分钟：CNF；互补文字；resolution；∀/∃
+- 1 小时：练 CNF；做归结；看量词作用域
+- 必背：KB∧¬φ、CNF、resolution、空子句
+- 需要做题：CNF 转换、归结证明、量词判断
+- 理解即可：一阶逻辑表达力</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 17：Logic II</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

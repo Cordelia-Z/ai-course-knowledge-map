@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 13：Bayesian Networks I｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="09_csp2.html">← 上一章</a><a href="11_bn2.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 10 · 贝叶斯网络 I</p><h1>Lecture 13：Bayesian Networks I</h1><p class="subtitle">本章建立概率基础，并用贝叶斯网络把联合分布拆成 DAG 上的局部条件分布乘积。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 13 - Bayesian networks I.pdf</span></div><div class="meta-item"><b>所属模块</b><span>贝叶斯网络 I</span></div><div class="meta-item"><b>老师重点</b><span>BN 的核心价值是用图结构表达条件独立，从而压缩联合分布。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>贝叶斯网络 I</h2><p>本章建立概率基础，并用贝叶斯网络把联合分布拆成 DAG 上的局部条件分布乘积。</p></div><div><p><b>老师重点</b></p><p>BN 的核心价值是用图结构表达条件独立，从而压缩联合分布。</p></div></aside><div class="branches"><article class="branch searchable"><h3>概率基础</h3><p class="summary">区分联合、边缘和条件分布。</p><div class="node-grid"><div class="node searchable"><b>随机变量</b><small>取值不确定的变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>联合分布</b><small>多个变量同时取值的概率。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>边缘分布</b><small>把不关心变量求和消去。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>条件分布</b><small>给定证据后的概率分布。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>概率推理任务</h3><p class="summary">用已知证据查询未知变量。</p><div class="node-grid"><div class="node searchable"><b>查询变量</b><small>想要求概率的目标变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>证据变量</b><small>已经观测到的变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>隐藏变量</b><small>需要边缘化的未观测变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>归一化</b><small>把未归一化概率缩放为总和 1。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article><article class="branch searchable"><h3>BN 结构</h3><p class="summary">DAG 表达变量之间的局部依赖。</p><div class="node-grid"><div class="node searchable"><b>DAG</b><small>有向无环图，节点是随机变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>父节点</b><small>节点概率直接条件依赖的变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>CPD</b><small>每个节点在父节点条件下的概率表。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>联合分解</b><small>完整联合分布等于所有节点 CPD 乘积。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article><article class="branch searchable"><h3>条件独立与概率程序</h3><p class="summary">图结构隐含独立假设，也可看成生成程序。</p><div class="node-grid"><div class="node searchable"><b>条件独立</b><small>给定某些变量后，两个变量互不提供信息。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>局部马尔可夫性</b><small>给定父节点后，与非后代独立。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>概率程序</b><small>按拓扑顺序采样变量。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>结构假设</b><small>BN 简化来自条件独立假设。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 概率基础</h3><p>区分联合、边缘和条件分布。</p>
+<h4>关键概念</h4><ul><li><b>随机变量</b>：取值不确定的变量。</li><li><b>联合分布</b>：多个变量同时取值的概率。</li><li><b>边缘分布</b>：把不关心变量求和消去。</li><li><b>条件分布</b>：给定证据后的概率分布。</li></ul>
+<h4>公式/规则</h4><ul><li>P(A|B)=P(A,B)/P(B)</li><li>P(A)=Σ_b P(A,b)</li></ul>
+<h4>典型例子</h4><ul><li>P(Weather,Traffic) 是联合；P(Traffic|Weather) 是条件。</li></ul>
+<h4>老师强调点</h4><ul><li>概率基础是 BN 的前置。</li></ul>
+<h4>易错点</h4><ul><li>易错：联合、边缘、条件不能混用。</li></ul>
+<h4>考试可能考法</h4><ul><li>做小型概率查询。</li></ul></article><article class="struct-card searchable"><h3>2. 概率推理任务</h3><p>用已知证据查询未知变量。</p>
+<h4>关键概念</h4><ul><li><b>查询变量</b>：想要求概率的目标变量。</li><li><b>证据变量</b>：已经观测到的变量。</li><li><b>隐藏变量</b>：需要边缘化的未观测变量。</li></ul>
+<h4>公式/规则</h4><ul><li><b>归一化</b>：把未归一化概率缩放为总和 1。</li></ul>
+<h4>典型例子</h4><ul><li>已知症状，查询疾病概率。</li></ul>
+<h4>老师强调点</h4><ul><li>查询时要知道哪些变量求和消去。</li></ul>
+<h4>易错点</h4><ul><li>易错：隐藏变量通常不能忽略。</li></ul>
+<h4>考试可能考法</h4><ul><li>写出概率查询表达式。</li></ul></article><article class="struct-card searchable"><h3>3. BN 结构</h3><p>DAG 表达变量之间的局部依赖。</p>
+<h4>关键概念</h4><ul><li><b>DAG</b>：有向无环图，节点是随机变量。</li><li><b>父节点</b>：节点概率直接条件依赖的变量。</li><li><b>CPD</b>：每个节点在父节点条件下的概率表。</li></ul>
+<h4>公式/规则</h4><ul><li>P(X1,…,Xn)=∏_i P(X_i|Parents_i)</li></ul>
+<h4>典型例子</h4><ul><li>Cloudy→Rain→WetGrass。</li></ul>
+<h4>老师强调点</h4><ul><li>BN 用局部 CPD 压缩巨大联合分布。</li></ul>
+<h4>易错点</h4><ul><li>易错：图边不一定能直接当现实因果。</li></ul>
+<h4>考试可能考法</h4><ul><li>根据图写联合分布。</li></ul></article><article class="struct-card searchable"><h3>4. 条件独立与概率程序</h3><p>图结构隐含独立假设，也可看成生成程序。</p>
+<h4>关键概念</h4><ul><li><b>条件独立</b>：给定某些变量后，两个变量互不提供信息。</li><li><b>局部马尔可夫性</b>：给定父节点后，与非后代独立。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>给定父节点后，节点不必依赖所有其他变量。</li></ul>
+<h4>老师强调点</h4><ul><li>条件独立要说明给定什么条件。</li></ul>
+<h4>易错点</h4><ul><li>易错：只说独立，不说条件。</li></ul>
+<h4>考试可能考法</h4><ul><li>判断条件独立。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>概率基础</h3><span class="formula">P(A|B)=P(A,B)/P(B)</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>概率基础</h3><span class="formula">P(A)=Σ_b P(A,b)</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>BN 结构</h3><span class="formula">P(X1,…,Xn)=∏_i P(X_i|Parents_i)</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>联合/边缘/条件</li><li>DAG+CPD</li><li>BN 分解</li><li>条件独立</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>概率基础题</li><li>根据图写分解</li><li>判断条件独立</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>P(A|B)、边缘化、BN 分解</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>BN 写联合分布、概率查询</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>概率程序直觉</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>11 贝叶斯网络 II</b><a href="11_bn2.html">Lecture 14：Bayesian Networks II</a></div><div class="relation-card"><b>08 CSP I</b><a href="08_csp1.html">Lecture 11：CSPs I</a></div><div class="relation-card"><b>09 CSP II</b><a href="09_csp2.html">Lecture 12：CSPs II</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 13：Bayesian Networks I&quot;,
+  &quot;material&quot;: &quot;Lecture 13 - Bayesian networks I.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章建立概率基础，并用贝叶斯网络把联合分布拆成 DAG 上的局部条件分布乘积。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;概率基础&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;区分联合、边缘和条件分布。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;随机变量&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;取值不确定的变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;联合分布&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;多个变量同时取值的概率。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;边缘分布&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;把不关心变量求和消去。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;条件分布&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;给定证据后的概率分布。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;P(A|B)=P(A,B)/P(B)&quot;,
+        &quot;P(A)=Σ_b P(A,b)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;P(Weather,Traffic) 是联合；P(Traffic|Weather) 是条件。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;概率基础是 BN 的前置。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：联合、边缘、条件不能混用。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;做小型概率查询。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;概率推理任务&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用已知证据查询未知变量。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;查询变量&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;想要求概率的目标变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;证据变量&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;已经观测到的变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;隐藏变量&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;需要边缘化的未观测变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;归一化&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;把未归一化概率缩放为总和 1。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;已知症状，查询疾病概率。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;查询时要知道哪些变量求和消去。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：隐藏变量通常不能忽略。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;写出概率查询表达式。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;BN 结构&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;DAG 表达变量之间的局部依赖。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;DAG&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;有向无环图，节点是随机变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;父节点&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;节点概率直接条件依赖的变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;CPD&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;每个节点在父节点条件下的概率表。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;联合分解&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;完整联合分布等于所有节点 CPD 乘积。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;P(X1,…,Xn)=∏_i P(X_i|Parents_i)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;Cloudy→Rain→WetGrass。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;BN 用局部 CPD 压缩巨大联合分布。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：图边不一定能直接当现实因果。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;根据图写联合分布。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;条件独立与概率程序&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;图结构隐含独立假设，也可看成生成程序。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;条件独立&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;给定某些变量后，两个变量互不提供信息。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;局部马尔可夫性&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;给定父节点后，与非后代独立。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;概率程序&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;按拓扑顺序采样变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;结构假设&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;BN 简化来自条件独立假设。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;给定父节点后，节点不必依赖所有其他变量。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;条件独立要说明给定什么条件。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：只说独立，不说条件。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;判断条件独立。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;联合/边缘/条件&quot;,
+      &quot;DAG+CPD&quot;,
+      &quot;BN 分解&quot;,
+      &quot;条件独立&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;概率基础题&quot;,
+      &quot;根据图写分解&quot;,
+      &quot;判断条件独立&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;P(A|B)、边缘化、BN 分解&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;BN 写联合分布、概率查询&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;概率程序直觉&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 13：Bayesian Networks I
+
+本章核心主题：本章建立概率基础，并用贝叶斯网络把联合分布拆成 DAG 上的局部条件分布乘积。
+
+老师重点：BN 的核心价值是用图结构表达条件独立，从而压缩联合分布。
+
+## 1. 概率基础
+
+### 1.1 二级知识点
+
+- 核心概念：区分联合、边缘和条件分布。
+- 公式/规则：P(A|B)=P(A,B)/P(B)；P(A)=Σ_b P(A,b)
+- 典型例子：P(Weather,Traffic) 是联合；P(Traffic|Weather) 是条件。
+- 老师重点：概率基础是 BN 的前置。
+- 易错点：易错：联合、边缘、条件不能混用。
+- 考点：做小型概率查询。
+
+### 1.2 随机变量
+
+- 类型：核心概念
+- 说明：取值不确定的变量。
+
+### 1.3 联合分布
+
+- 类型：核心概念
+- 说明：多个变量同时取值的概率。
+
+### 1.4 边缘分布
+
+- 类型：核心概念
+- 说明：把不关心变量求和消去。
+
+### 1.5 条件分布
+
+- 类型：核心概念
+- 说明：给定证据后的概率分布。
+
+## 2. 概率推理任务
+
+### 2.1 二级知识点
+
+- 核心概念：用已知证据查询未知变量。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：已知症状，查询疾病概率。
+- 老师重点：查询时要知道哪些变量求和消去。
+- 易错点：易错：隐藏变量通常不能忽略。
+- 考点：写出概率查询表达式。
+
+### 2.2 查询变量
+
+- 类型：核心概念
+- 说明：想要求概率的目标变量。
+
+### 2.3 证据变量
+
+- 类型：核心概念
+- 说明：已经观测到的变量。
+
+### 2.4 隐藏变量
+
+- 类型：核心概念
+- 说明：需要边缘化的未观测变量。
+
+### 2.5 归一化
+
+- 类型：公式/推导
+- 说明：把未归一化概率缩放为总和 1。
+
+## 3. BN 结构
+
+### 3.1 二级知识点
+
+- 核心概念：DAG 表达变量之间的局部依赖。
+- 公式/规则：P(X1,…,Xn)=∏_i P(X_i|Parents_i)
+- 典型例子：Cloudy→Rain→WetGrass。
+- 老师重点：BN 用局部 CPD 压缩巨大联合分布。
+- 易错点：易错：图边不一定能直接当现实因果。
+- 考点：根据图写联合分布。
+
+### 3.2 DAG
+
+- 类型：核心概念
+- 说明：有向无环图，节点是随机变量。
+
+### 3.3 父节点
+
+- 类型：核心概念
+- 说明：节点概率直接条件依赖的变量。
+
+### 3.4 CPD
+
+- 类型：核心概念
+- 说明：每个节点在父节点条件下的概率表。
+
+### 3.5 联合分解
+
+- 类型：公式/推导
+- 说明：完整联合分布等于所有节点 CPD 乘积。
+
+## 4. 条件独立与概率程序
+
+### 4.1 二级知识点
+
+- 核心概念：图结构隐含独立假设，也可看成生成程序。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：给定父节点后，节点不必依赖所有其他变量。
+- 老师重点：条件独立要说明给定什么条件。
+- 易错点：易错：只说独立，不说条件。
+- 考点：判断条件独立。
+
+### 4.2 条件独立
+
+- 类型：核心概念
+- 说明：给定某些变量后，两个变量互不提供信息。
+
+### 4.3 局部马尔可夫性
+
+- 类型：核心概念
+- 说明：给定父节点后，与非后代独立。
+
+### 4.4 概率程序
+
+- 类型：图示/流程
+- 说明：按拓扑顺序采样变量。
+
+### 4.5 结构假设
+
+- 类型：易错点
+- 说明：BN 简化来自条件独立假设。
+
+## 复习路线
+
+- 20 分钟：联合/边缘/条件；DAG+CPD；BN 分解；条件独立
+- 1 小时：概率基础题；根据图写分解；判断条件独立
+- 必背：P(A|B)、边缘化、BN 分解
+- 需要做题：BN 写联合分布、概率查询
+- 理解即可：概率程序直觉</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 13：Bayesian Networks I</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 12：CSPs II｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="08_csp1.html">← 上一章</a><a href="10_bn1.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 09 · CSP II</p><h1>Lecture 12：CSPs II</h1><p class="subtitle">本章扩展 CSP 的求解方法：链式结构、对象跟踪、贪婪搜索、集束搜索、局部搜索、条件化和变量消除。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 12 - CSPs II.pdf</span></div><div class="meta-item"><b>所属模块</b><span>CSP II</span></div><div class="meta-item"><b>老师重点</b><span>利用结构比盲目搜索更重要，链式结构和变量消除体现按结构计算。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>CSP II</h2><p>本章扩展 CSP 的求解方法：链式结构、对象跟踪、贪婪搜索、集束搜索、局部搜索、条件化和变量消除。</p></div><div><p><b>老师重点</b></p><p>利用结构比盲目搜索更重要，链式结构和变量消除体现按结构计算。</p></div></aside><div class="branches"><article class="branch searchable"><h3>因子图与链式结构</h3><p class="summary">图结构决定搜索和推理复杂度。</p><div class="node-grid"><div class="node searchable"><b>因子图复习</b><small>变量节点和因子节点交替连接。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>链式结构</b><small>变量按序连接，局部依赖明显。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>对象跟踪建模</b><small>用时间序列变量表示目标变化。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>局部依赖</b><small>每个变量只与少量邻居直接相关。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>贪婪、集束与局部搜索</h3><p class="summary">在大空间中用启发式寻找较好解。</p><div class="node-grid"><div class="node searchable"><b>贪婪搜索</b><small>每步选当前最优局部选择。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>集束搜索</b><small>每层保留若干较好候选。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>局部搜索</b><small>从完整赋值出发局部修改。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>局部最优</b><small>可能停在非全局最优解。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article><article class="branch searchable"><h3>条件化</h3><p class="summary">固定部分变量，使剩余问题结构更简单。</p><div class="node-grid"><div class="node searchable"><b>选定变量</b><small>挑选变量枚举取值。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>问题分解</b><small>固定后原图可能拆成子问题。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>复杂度权衡</b><small>枚举开销换取结构简化。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>割点直觉</b><small>固定关键变量可能切断图。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>变量消除</h3><p class="summary">合并相关因子并消去变量。</p><div class="node-grid"><div class="node searchable"><b>消除顺序</b><small>不同顺序导致中间因子大小不同。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>合并因子</b><small>把含待消除变量的因子乘起来。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>求和/最大化消去</b><small>根据任务对变量求和或取 max。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>中间因子</b><small>消除变量后产生的新因子。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 因子图与链式结构</h3><p>图结构决定搜索和推理复杂度。</p>
+<h4>关键概念</h4><ul><li><b>因子图复习</b>：变量节点和因子节点交替连接。</li><li><b>链式结构</b>：变量按序连接，局部依赖明显。</li><li><b>局部依赖</b>：每个变量只与少量邻居直接相关。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>位置 Ct 只强依赖 Ct-1 和观测 Et。</li></ul>
+<h4>老师强调点</h4><ul><li>结构简单时可以动态规划式计算。</li></ul>
+<h4>易错点</h4><ul><li>易错：图结构不同，算法效率可能完全不同。</li></ul>
+<h4>考试可能考法</h4><ul><li>识别链式结构。</li></ul></article><article class="struct-card searchable"><h3>2. 贪婪、集束与局部搜索</h3><p>在大空间中用启发式寻找较好解。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>N 皇后可从随机完整赋值开始修补冲突。</li></ul>
+<h4>老师强调点</h4><ul><li>启发式快但不保证最优。</li></ul>
+<h4>易错点</h4><ul><li>易错：beam search 也可能丢掉潜在好路径。</li></ul>
+<h4>考试可能考法</h4><ul><li>比较三类搜索。</li></ul></article><article class="struct-card searchable"><h3>3. 条件化</h3><p>固定部分变量，使剩余问题结构更简单。</p>
+<h4>关键概念</h4><ul><li><b>复杂度权衡</b>：枚举开销换取结构简化。</li><li><b>割点直觉</b>：固定关键变量可能切断图。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>固定中心变量后左右两部分独立。</li></ul>
+<h4>老师强调点</h4><ul><li>条件化是为了改变图结构。</li></ul>
+<h4>易错点</h4><ul><li>易错：不是随便固定变量。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释 conditioning 的作用。</li></ul></article><article class="struct-card searchable"><h3>4. 变量消除</h3><p>合并相关因子并消去变量。</p>
+<h4>关键概念</h4><ul><li><b>中间因子</b>：消除变量后产生的新因子。</li></ul>
+<h4>公式/规则</h4><ul><li>newFactor(Y)=Σ_X ∏ factors(X,Y)</li></ul>
+<h4>典型例子</h4><ul><li>链式结构按顺序消除可避免巨大中间表。</li></ul>
+<h4>老师强调点</h4><ul><li>变量消除是结构化精确计算方法。</li></ul>
+<h4>易错点</h4><ul><li>易错：难点在消除顺序。</li></ul>
+<h4>考试可能考法</h4><ul><li>手推变量消除一步。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>变量消除</h3><span class="formula">newFactor(Y)=Σ_X ∏ factors(X,Y)</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>链式结构</li><li>贪婪/集束/局部搜索</li><li>条件化</li><li>变量消除</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>复习因子图</li><li>比较搜索</li><li>手推变量消除</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>beam search、local search、conditioning、variable elimination</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>变量消除、消除顺序比较</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>对象跟踪建模直觉</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>08 CSP I</b><a href="08_csp1.html">Lecture 11：CSPs I</a></div><div class="relation-card"><b>10 贝叶斯网络 I</b><a href="10_bn1.html">Lecture 13：Bayesian Networks I</a></div><div class="relation-card"><b>11 贝叶斯网络 II</b><a href="11_bn2.html">Lecture 14：Bayesian Networks II</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 12：CSPs II&quot;,
+  &quot;material&quot;: &quot;Lecture 12 - CSPs II.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章扩展 CSP 的求解方法：链式结构、对象跟踪、贪婪搜索、集束搜索、局部搜索、条件化和变量消除。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;因子图与链式结构&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;图结构决定搜索和推理复杂度。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;因子图复习&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;变量节点和因子节点交替连接。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;链式结构&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;变量按序连接，局部依赖明显。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;对象跟踪建模&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;用时间序列变量表示目标变化。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;局部依赖&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;每个变量只与少量邻居直接相关。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;位置 Ct 只强依赖 Ct-1 和观测 Et。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;结构简单时可以动态规划式计算。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：图结构不同，算法效率可能完全不同。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;识别链式结构。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;贪婪、集束与局部搜索&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;在大空间中用启发式寻找较好解。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;贪婪搜索&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;每步选当前最优局部选择。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;集束搜索&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;每层保留若干较好候选。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;局部搜索&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;从完整赋值出发局部修改。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;局部最优&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;可能停在非全局最优解。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;N 皇后可从随机完整赋值开始修补冲突。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;启发式快但不保证最优。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：beam search 也可能丢掉潜在好路径。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;比较三类搜索。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;条件化&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;固定部分变量，使剩余问题结构更简单。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;选定变量&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;挑选变量枚举取值。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;问题分解&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;固定后原图可能拆成子问题。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;复杂度权衡&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;枚举开销换取结构简化。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;割点直觉&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;固定关键变量可能切断图。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;固定中心变量后左右两部分独立。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;条件化是为了改变图结构。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：不是随便固定变量。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释 conditioning 的作用。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;变量消除&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;合并相关因子并消去变量。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;消除顺序&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;不同顺序导致中间因子大小不同。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;合并因子&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;把含待消除变量的因子乘起来。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;求和/最大化消去&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;根据任务对变量求和或取 max。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;中间因子&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;消除变量后产生的新因子。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;newFactor(Y)=Σ_X ∏ factors(X,Y)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;链式结构按顺序消除可避免巨大中间表。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;变量消除是结构化精确计算方法。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：难点在消除顺序。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;手推变量消除一步。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;链式结构&quot;,
+      &quot;贪婪/集束/局部搜索&quot;,
+      &quot;条件化&quot;,
+      &quot;变量消除&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;复习因子图&quot;,
+      &quot;比较搜索&quot;,
+      &quot;手推变量消除&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;beam search、local search、conditioning、variable elimination&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;变量消除、消除顺序比较&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;对象跟踪建模直觉&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 12：CSPs II
+
+本章核心主题：本章扩展 CSP 的求解方法：链式结构、对象跟踪、贪婪搜索、集束搜索、局部搜索、条件化和变量消除。
+
+老师重点：利用结构比盲目搜索更重要，链式结构和变量消除体现按结构计算。
+
+## 1. 因子图与链式结构
+
+### 1.1 二级知识点
+
+- 核心概念：图结构决定搜索和推理复杂度。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：位置 Ct 只强依赖 Ct-1 和观测 Et。
+- 老师重点：结构简单时可以动态规划式计算。
+- 易错点：易错：图结构不同，算法效率可能完全不同。
+- 考点：识别链式结构。
+
+### 1.2 因子图复习
+
+- 类型：核心概念
+- 说明：变量节点和因子节点交替连接。
+
+### 1.3 链式结构
+
+- 类型：核心概念
+- 说明：变量按序连接，局部依赖明显。
+
+### 1.4 对象跟踪建模
+
+- 类型：图示/流程
+- 说明：用时间序列变量表示目标变化。
+
+### 1.5 局部依赖
+
+- 类型：核心概念
+- 说明：每个变量只与少量邻居直接相关。
+
+## 2. 贪婪、集束与局部搜索
+
+### 2.1 二级知识点
+
+- 核心概念：在大空间中用启发式寻找较好解。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：N 皇后可从随机完整赋值开始修补冲突。
+- 老师重点：启发式快但不保证最优。
+- 易错点：易错：beam search 也可能丢掉潜在好路径。
+- 考点：比较三类搜索。
+
+### 2.2 贪婪搜索
+
+- 类型：图示/流程
+- 说明：每步选当前最优局部选择。
+
+### 2.3 集束搜索
+
+- 类型：图示/流程
+- 说明：每层保留若干较好候选。
+
+### 2.4 局部搜索
+
+- 类型：图示/流程
+- 说明：从完整赋值出发局部修改。
+
+### 2.5 局部最优
+
+- 类型：易错点
+- 说明：可能停在非全局最优解。
+
+## 3. 条件化
+
+### 3.1 二级知识点
+
+- 核心概念：固定部分变量，使剩余问题结构更简单。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：固定中心变量后左右两部分独立。
+- 老师重点：条件化是为了改变图结构。
+- 易错点：易错：不是随便固定变量。
+- 考点：解释 conditioning 的作用。
+
+### 3.2 选定变量
+
+- 类型：图示/流程
+- 说明：挑选变量枚举取值。
+
+### 3.3 问题分解
+
+- 类型：图示/流程
+- 说明：固定后原图可能拆成子问题。
+
+### 3.4 复杂度权衡
+
+- 类型：核心概念
+- 说明：枚举开销换取结构简化。
+
+### 3.5 割点直觉
+
+- 类型：核心概念
+- 说明：固定关键变量可能切断图。
+
+## 4. 变量消除
+
+### 4.1 二级知识点
+
+- 核心概念：合并相关因子并消去变量。
+- 公式/规则：newFactor(Y)=Σ_X ∏ factors(X,Y)
+- 典型例子：链式结构按顺序消除可避免巨大中间表。
+- 老师重点：变量消除是结构化精确计算方法。
+- 易错点：易错：难点在消除顺序。
+- 考点：手推变量消除一步。
+
+### 4.2 消除顺序
+
+- 类型：图示/流程
+- 说明：不同顺序导致中间因子大小不同。
+
+### 4.3 合并因子
+
+- 类型：公式/推导
+- 说明：把含待消除变量的因子乘起来。
+
+### 4.4 求和/最大化消去
+
+- 类型：公式/推导
+- 说明：根据任务对变量求和或取 max。
+
+### 4.5 中间因子
+
+- 类型：核心概念
+- 说明：消除变量后产生的新因子。
+
+## 复习路线
+
+- 20 分钟：链式结构；贪婪/集束/局部搜索；条件化；变量消除
+- 1 小时：复习因子图；比较搜索；手推变量消除
+- 必背：beam search、local search、conditioning、variable elimination
+- 需要做题：变量消除、消除顺序比较
+- 理解即可：对象跟踪建模直觉</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 12：CSPs II</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

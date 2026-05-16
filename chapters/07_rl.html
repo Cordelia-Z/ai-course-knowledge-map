@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 8：MDPs II / Reinforcement Learning｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="06_mdp_program.html">← 上一章</a><a href="08_csp1.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 07 · 强化学习</p><h1>Lecture 8：MDPs II / Reinforcement Learning</h1><p class="subtitle">本章在 MDP 基础上进入强化学习：当 T/R 未知时，智能体通过交互经验学习模型或价值。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 8 - MDPs II.pdf</span></div><div class="meta-item"><b>所属模块</b><span>强化学习</span></div><div class="meta-item"><b>老师重点</b><span>强化学习不是没有 MDP，而是 MDP 的转移和奖励未知。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>强化学习</h2><p>本章在 MDP 基础上进入强化学习：当 T/R 未知时，智能体通过交互经验学习模型或价值。</p></div><div><p><b>老师重点</b></p><p>强化学习不是没有 MDP，而是 MDP 的转移和奖励未知。</p></div></aside><div class="branches"><article class="branch searchable"><h3>强化学习问题</h3><p class="summary">智能体不知道完整环境模型，只能边行动边学习。</p><div class="node-grid"><div class="node searchable"><b>未知 T/R</b><small>转移概率和奖励函数无法预先给出。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>交互经验</b><small>每步得到 s,a,r,s&#x27;。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>episode</b><small>从起点到终止的一条轨迹。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>在线学习</b><small>行动产生数据，数据更新行为。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>Model-based Learning</h3><p class="summary">先估计环境模型，再用规划算法求策略。</p><div class="node-grid"><div class="node searchable"><b>估计转移</b><small>统计 s,a 到 s&#x27; 的频率。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>估计奖励</b><small>用观察到的平均奖励估计 R。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>Monte Carlo</b><small>用完整采样轨迹回报估计。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>再规划</b><small>估计模型后可运行价值迭代。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>Model-free Learning</h3><p class="summary">不显式估计 T/R，直接学习价值。</p><div class="node-grid"><div class="node searchable"><b>TD learning</b><small>用当前奖励和下一状态估计修正当前价值。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>Q-learning</b><small>直接更新 Q(s,a)，不需要 T。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>TD target</b><small>r + γ max_a&#x27; Q(s&#x27;,a&#x27;)。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>learning rate</b><small>控制新经验覆盖旧估计程度。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article><article class="branch searchable"><h3>探索与利用</h3><p class="summary">在尝试新行动和选择当前最优之间平衡。</p><div class="node-grid"><div class="node searchable"><b>exploration</b><small>尝试不确定行动，获得新信息。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>exploitation</b><small>选择当前估计最好的行动。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>ε-greedy</b><small>多数时候利用，少数时候随机探索。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>局部最优风险</b><small>只利用可能错过更好策略。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 强化学习问题</h3><p>智能体不知道完整环境模型，只能边行动边学习。</p>
+<h4>关键概念</h4><ul><li><b>未知 T/R</b>：转移概率和奖励函数无法预先给出。</li><li><b>交互经验</b>：每步得到 s,a,r,s&#x27;。</li><li><b>episode</b>：从起点到终止的一条轨迹。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>机器人在未知地图中试探并学习避障。</li></ul>
+<h4>老师强调点</h4><ul><li>RL 是为了更好地行动，不只是预测。</li></ul>
+<h4>易错点</h4><ul><li>易错：把 RL 当成普通监督学习。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释 RL 与 MDP 关系。</li></ul></article><article class="struct-card searchable"><h3>2. Model-based Learning</h3><p>先估计环境模型，再用规划算法求策略。</p>
+<h4>关键概念</h4><ul><li><b>Monte Carlo</b>：用完整采样轨迹回报估计。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>走多次某路线后统计成功率和平均收益。</li></ul>
+<h4>老师强调点</h4><ul><li>model-based 先学模型再规划。</li></ul>
+<h4>易错点</h4><ul><li>易错：model-based 不等于直接更新 Q。</li></ul>
+<h4>考试可能考法</h4><ul><li>区分 model-based 与 model-free。</li></ul></article><article class="struct-card searchable"><h3>3. Model-free Learning</h3><p>不显式估计 T/R，直接学习价值。</p>
+<h4>关键概念</h4><ul><li><b>TD learning</b>：用当前奖励和下一状态估计修正当前价值。</li></ul>
+<h4>公式/规则</h4><ul><li>Q(s,a)←(1−η)Q(s,a)+η[r+γ max_a&#x27;Q(s&#x27;,a&#x27;)]</li></ul>
+<h4>典型例子</h4><ul><li>发现某动作奖励差，就降低该状态-行动 Q。</li></ul>
+<h4>老师强调点</h4><ul><li>Q-learning 是高频计算题。</li></ul>
+<h4>易错点</h4><ul><li>易错：更新的是状态-行动对。</li></ul>
+<h4>考试可能考法</h4><ul><li>手算 Q-learning 更新。</li></ul></article><article class="struct-card searchable"><h3>4. 探索与利用</h3><p>在尝试新行动和选择当前最优之间平衡。</p>
+<h4>关键概念</h4><ul><li><b>exploration</b>：尝试不确定行动，获得新信息。</li><li><b>exploitation</b>：选择当前估计最好的行动。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>常去熟悉餐厅是利用，尝试新店是探索。</li></ul>
+<h4>老师强调点</h4><ul><li>探索不是犯错，是学习未知环境的必要成本。</li></ul>
+<h4>易错点</h4><ul><li>易错：只利用会导致认知不足。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释探索-利用权衡。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>Model-free Learning</h3><span class="formula">Q(s,a)←(1−η)Q(s,a)+η[r+γ max_a&#x27;Q(s&#x27;,a&#x27;)]</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>未知 T/R</li><li>model-based/free</li><li>Q-learning</li><li>探索利用</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>复习 MDP</li><li>比较两类 RL</li><li>手算 Q 更新</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>Q-learning、model-based/free、exploration/exploitation</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>Q-learning 数值更新</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>Monte Carlo 与 TD 直觉</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>05 MDP I</b><a href="05_mdp1.html">Lecture 7：MDPs I</a></div><div class="relation-card"><b>06 MDP 程序实现</b><a href="06_mdp_program.html">Lecture 7 Program：MDPs Program I</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 8：MDPs II / Reinforcement Learning&quot;,
+  &quot;material&quot;: &quot;Lecture 8 - MDPs II.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章在 MDP 基础上进入强化学习：当 T/R 未知时，智能体通过交互经验学习模型或价值。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;强化学习问题&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;智能体不知道完整环境模型，只能边行动边学习。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;未知 T/R&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;转移概率和奖励函数无法预先给出。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;交互经验&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;每步得到 s,a,r,s&#x27;。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;episode&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;从起点到终止的一条轨迹。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;在线学习&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;行动产生数据，数据更新行为。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;机器人在未知地图中试探并学习避障。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;RL 是为了更好地行动，不只是预测。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把 RL 当成普通监督学习。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释 RL 与 MDP 关系。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Model-based Learning&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;先估计环境模型，再用规划算法求策略。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;估计转移&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;统计 s,a 到 s&#x27; 的频率。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;估计奖励&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;用观察到的平均奖励估计 R。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;Monte Carlo&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用完整采样轨迹回报估计。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;再规划&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;估计模型后可运行价值迭代。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;走多次某路线后统计成功率和平均收益。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;model-based 先学模型再规划。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：model-based 不等于直接更新 Q。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;区分 model-based 与 model-free。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Model-free Learning&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;不显式估计 T/R，直接学习价值。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;TD learning&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用当前奖励和下一状态估计修正当前价值。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;Q-learning&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;直接更新 Q(s,a)，不需要 T。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;TD target&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;r + γ max_a&#x27; Q(s&#x27;,a&#x27;)。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;learning rate&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;控制新经验覆盖旧估计程度。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;Q(s,a)←(1−η)Q(s,a)+η[r+γ max_a&#x27;Q(s&#x27;,a&#x27;)]&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;发现某动作奖励差，就降低该状态-行动 Q。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;Q-learning 是高频计算题。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：更新的是状态-行动对。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;手算 Q-learning 更新。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;探索与利用&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;在尝试新行动和选择当前最优之间平衡。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;exploration&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;尝试不确定行动，获得新信息。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;exploitation&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;选择当前估计最好的行动。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;ε-greedy&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;多数时候利用，少数时候随机探索。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;局部最优风险&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;只利用可能错过更好策略。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;常去熟悉餐厅是利用，尝试新店是探索。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;探索不是犯错，是学习未知环境的必要成本。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：只利用会导致认知不足。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释探索-利用权衡。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;未知 T/R&quot;,
+      &quot;model-based/free&quot;,
+      &quot;Q-learning&quot;,
+      &quot;探索利用&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;复习 MDP&quot;,
+      &quot;比较两类 RL&quot;,
+      &quot;手算 Q 更新&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;Q-learning、model-based/free、exploration/exploitation&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;Q-learning 数值更新&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;Monte Carlo 与 TD 直觉&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 8：MDPs II / Reinforcement Learning
+
+本章核心主题：本章在 MDP 基础上进入强化学习：当 T/R 未知时，智能体通过交互经验学习模型或价值。
+
+老师重点：强化学习不是没有 MDP，而是 MDP 的转移和奖励未知。
+
+## 1. 强化学习问题
+
+### 1.1 二级知识点
+
+- 核心概念：智能体不知道完整环境模型，只能边行动边学习。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：机器人在未知地图中试探并学习避障。
+- 老师重点：RL 是为了更好地行动，不只是预测。
+- 易错点：易错：把 RL 当成普通监督学习。
+- 考点：解释 RL 与 MDP 关系。
+
+### 1.2 未知 T/R
+
+- 类型：核心概念
+- 说明：转移概率和奖励函数无法预先给出。
+
+### 1.3 交互经验
+
+- 类型：核心概念
+- 说明：每步得到 s,a,r,s&#x27;。
+
+### 1.4 episode
+
+- 类型：核心概念
+- 说明：从起点到终止的一条轨迹。
+
+### 1.5 在线学习
+
+- 类型：图示/流程
+- 说明：行动产生数据，数据更新行为。
+
+## 2. Model-based Learning
+
+### 2.1 二级知识点
+
+- 核心概念：先估计环境模型，再用规划算法求策略。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：走多次某路线后统计成功率和平均收益。
+- 老师重点：model-based 先学模型再规划。
+- 易错点：易错：model-based 不等于直接更新 Q。
+- 考点：区分 model-based 与 model-free。
+
+### 2.2 估计转移
+
+- 类型：图示/流程
+- 说明：统计 s,a 到 s&#x27; 的频率。
+
+### 2.3 估计奖励
+
+- 类型：图示/流程
+- 说明：用观察到的平均奖励估计 R。
+
+### 2.4 Monte Carlo
+
+- 类型：核心概念
+- 说明：用完整采样轨迹回报估计。
+
+### 2.5 再规划
+
+- 类型：图示/流程
+- 说明：估计模型后可运行价值迭代。
+
+## 3. Model-free Learning
+
+### 3.1 二级知识点
+
+- 核心概念：不显式估计 T/R，直接学习价值。
+- 公式/规则：Q(s,a)←(1−η)Q(s,a)+η[r+γ max_a&#x27;Q(s&#x27;,a&#x27;)]
+- 典型例子：发现某动作奖励差，就降低该状态-行动 Q。
+- 老师重点：Q-learning 是高频计算题。
+- 易错点：易错：更新的是状态-行动对。
+- 考点：手算 Q-learning 更新。
+
+### 3.2 TD learning
+
+- 类型：核心概念
+- 说明：用当前奖励和下一状态估计修正当前价值。
+
+### 3.3 Q-learning
+
+- 类型：公式/推导
+- 说明：直接更新 Q(s,a)，不需要 T。
+
+### 3.4 TD target
+
+- 类型：公式/推导
+- 说明：r + γ max_a&#x27; Q(s&#x27;,a&#x27;)。
+
+### 3.5 learning rate
+
+- 类型：公式/推导
+- 说明：控制新经验覆盖旧估计程度。
+
+## 4. 探索与利用
+
+### 4.1 二级知识点
+
+- 核心概念：在尝试新行动和选择当前最优之间平衡。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：常去熟悉餐厅是利用，尝试新店是探索。
+- 老师重点：探索不是犯错，是学习未知环境的必要成本。
+- 易错点：易错：只利用会导致认知不足。
+- 考点：解释探索-利用权衡。
+
+### 4.2 exploration
+
+- 类型：核心概念
+- 说明：尝试不确定行动，获得新信息。
+
+### 4.3 exploitation
+
+- 类型：核心概念
+- 说明：选择当前估计最好的行动。
+
+### 4.4 ε-greedy
+
+- 类型：图示/流程
+- 说明：多数时候利用，少数时候随机探索。
+
+### 4.5 局部最优风险
+
+- 类型：易错点
+- 说明：只利用可能错过更好策略。
+
+## 复习路线
+
+- 20 分钟：未知 T/R；model-based/free；Q-learning；探索利用
+- 1 小时：复习 MDP；比较两类 RL；手算 Q 更新
+- 必背：Q-learning、model-based/free、exploration/exploitation
+- 需要做题：Q-learning 数值更新
+- 理解即可：Monte Carlo 与 TD 直觉</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 8：MDPs II / Reinforcement Learning</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

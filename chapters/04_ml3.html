@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 4：Machine Learning III｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="03_ml2.html">← 上一章</a><a href="05_mdp1.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 04 · 机器学习 III</p><h1>Lecture 4：Machine Learning III</h1><p class="subtitle">本章从训练转向泛化：训练误差、测试误差、过拟合、欠拟合、正则化、验证集和无监督学习。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 4 - Machine learning III.pdf</span></div><div class="meta-item"><b>所属模块</b><span>机器学习 III</span></div><div class="meta-item"><b>老师重点</b><span>训练误差低不是最终目标，验证集和测试集的意义必须分清。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>机器学习 III</h2><p>本章从训练转向泛化：训练误差、测试误差、过拟合、欠拟合、正则化、验证集和无监督学习。</p></div><div><p><b>老师重点</b></p><p>训练误差低不是最终目标，验证集和测试集的意义必须分清。</p></div></aside><div class="branches"><article class="branch searchable"><h3>泛化与数据划分</h3><p class="summary">最终关心未见样本上的表现。</p><div class="node-grid"><div class="node searchable"><b>训练误差</b><small>模型在训练集上的错误。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>测试误差</b><small>模型在未参与训练数据上的错误。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>验证集</b><small>用于调参和选模型。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>测试集</b><small>只用于最终评估，不能反复调参。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article><article class="branch searchable"><h3>过拟合与欠拟合</h3><p class="summary">模型复杂度和数据规模不匹配会导致泛化问题。</p><div class="node-grid"><div class="node searchable"><b>过拟合</b><small>训练好、测试差，模型记住噪声。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>欠拟合</b><small>训练和测试都差，模型能力不足或训练不足。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>模型复杂度</b><small>参数、特征、深度等影响拟合能力。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>数据规模</b><small>更多高质量数据通常能降低估计误差。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>误差分解</h3><p class="summary">区分表示不够还是数据不够。</p><div class="node-grid"><div class="node searchable"><b>近似误差</b><small>假设类太弱，无法表示真实规律。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>估计误差</b><small>数据有限导致学到的参数偏离最优。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>泛化差距</b><small>测试误差与训练误差之差。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>偏差-方差直觉</b><small>太简单偏差大，太复杂方差大。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>正则化与无监督学习</h3><p class="summary">通过限制复杂度或寻找数据结构提高学习质量。</p><div class="node-grid"><div class="node searchable"><b>正则化</b><small>在目标函数中加入复杂度惩罚。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>超参数</b><small>训练前设定，如学习率、正则强度。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>无监督学习</b><small>无标签时发现结构、聚类或低维表示。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>聚类/降维</b><small>典型无监督任务。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 泛化与数据划分</h3><p>最终关心未见样本上的表现。</p>
+<h4>关键概念</h4><ul><li><b>训练误差</b>：模型在训练集上的错误。</li><li><b>测试误差</b>：模型在未参与训练数据上的错误。</li><li><b>验证集</b>：用于调参和选模型。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>刷熟训练题不等于考试会做新题。</li></ul>
+<h4>老师强调点</h4><ul><li>训练误差低不代表测试好。</li></ul>
+<h4>易错点</h4><ul><li>易错：反复用测试集调参会污染测试集。</li></ul>
+<h4>考试可能考法</h4><ul><li>比较训练集、验证集、测试集。</li></ul></article><article class="struct-card searchable"><h3>2. 过拟合与欠拟合</h3><p>模型复杂度和数据规模不匹配会导致泛化问题。</p>
+<h4>关键概念</h4><ul><li><b>过拟合</b>：训练好、测试差，模型记住噪声。</li><li><b>欠拟合</b>：训练和测试都差，模型能力不足或训练不足。</li><li><b>模型复杂度</b>：参数、特征、深度等影响拟合能力。</li><li><b>数据规模</b>：更多高质量数据通常能降低估计误差。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>高次多项式拟合少量噪声点容易过拟合。</li></ul>
+<h4>老师强调点</h4><ul><li>泛化问题是 ML 的核心考点。</li></ul>
+<h4>易错点</h4><ul><li>易错：模型越复杂不一定越好。</li></ul>
+<h4>考试可能考法</h4><ul><li>根据训练/测试误差判断过拟合或欠拟合。</li></ul></article><article class="struct-card searchable"><h3>3. 误差分解</h3><p>区分表示不够还是数据不够。</p>
+<h4>关键概念</h4><ul><li><b>近似误差</b>：假设类太弱，无法表示真实规律。</li><li><b>估计误差</b>：数据有限导致学到的参数偏离最优。</li></ul>
+<h4>公式/规则</h4><ul><li>generalization gap = test error − train error</li></ul>
+<h4>典型例子</h4><ul><li>线性模型拟合强非线性数据是近似误差。</li></ul>
+<h4>老师强调点</h4><ul><li>要能判断错误来自哪里。</li></ul>
+<h4>易错点</h4><ul><li>易错：把所有测试差都归因于过拟合。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释近似误差与估计误差。</li></ul></article><article class="struct-card searchable"><h3>4. 正则化与无监督学习</h3><p>通过限制复杂度或寻找数据结构提高学习质量。</p>
+<h4>关键概念</h4><ul><li><b>正则化</b>：在目标函数中加入复杂度惩罚。</li><li><b>超参数</b>：训练前设定，如学习率、正则强度。</li><li><b>无监督学习</b>：无标签时发现结构、聚类或低维表示。</li></ul>
+<h4>公式/规则</h4><ul><li>min_w Σ_i Loss_i(w)+λΩ(w)</li></ul>
+<h4>典型例子</h4><ul><li>L2 正则惩罚过大的权重。</li></ul>
+<h4>老师强调点</h4><ul><li>正则化是处理过拟合的重要方法。</li></ul>
+<h4>易错点</h4><ul><li>易错：验证集调超参数，训练集学参数。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释正则化目标。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>误差分解</h3><span class="formula">generalization gap = test error − train error</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>正则化与无监督学习</h3><span class="formula">min_w Σ_i Loss_i(w)+λΩ(w)</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>训练/验证/测试集</li><li>过拟合/欠拟合</li><li>正则化</li><li>近似/估计误差</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>看数据划分</li><li>判断学习曲线</li><li>背正则化公式</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>过拟合、欠拟合、验证集、测试集、正则化</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>误差判断题、正则化理解题</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>无监督学习任务类型</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>02 机器学习 I</b><a href="02_ml1.html">Lecture 2：Machine Learning I</a></div><div class="relation-card"><b>03 机器学习 II</b><a href="03_ml2.html">Lecture 3：Machine Learning II</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 4：Machine Learning III&quot;,
+  &quot;material&quot;: &quot;Lecture 4 - Machine learning III.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章从训练转向泛化：训练误差、测试误差、过拟合、欠拟合、正则化、验证集和无监督学习。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;泛化与数据划分&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;最终关心未见样本上的表现。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;训练误差&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;模型在训练集上的错误。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;测试误差&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;模型在未参与训练数据上的错误。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;验证集&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用于调参和选模型。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;测试集&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;只用于最终评估，不能反复调参。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;刷熟训练题不等于考试会做新题。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;训练误差低不代表测试好。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：反复用测试集调参会污染测试集。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;比较训练集、验证集、测试集。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;过拟合与欠拟合&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;模型复杂度和数据规模不匹配会导致泛化问题。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;过拟合&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;训练好、测试差，模型记住噪声。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;欠拟合&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;训练和测试都差，模型能力不足或训练不足。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;模型复杂度&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;参数、特征、深度等影响拟合能力。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;数据规模&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;更多高质量数据通常能降低估计误差。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;高次多项式拟合少量噪声点容易过拟合。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;泛化问题是 ML 的核心考点。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：模型越复杂不一定越好。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;根据训练/测试误差判断过拟合或欠拟合。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;误差分解&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;区分表示不够还是数据不够。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;近似误差&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;假设类太弱，无法表示真实规律。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;估计误差&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;数据有限导致学到的参数偏离最优。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;泛化差距&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;测试误差与训练误差之差。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;偏差-方差直觉&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;太简单偏差大，太复杂方差大。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;generalization gap = test error − train error&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;线性模型拟合强非线性数据是近似误差。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;要能判断错误来自哪里。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把所有测试差都归因于过拟合。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释近似误差与估计误差。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;正则化与无监督学习&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;通过限制复杂度或寻找数据结构提高学习质量。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;正则化&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;在目标函数中加入复杂度惩罚。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;超参数&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;训练前设定，如学习率、正则强度。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;无监督学习&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;无标签时发现结构、聚类或低维表示。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;聚类/降维&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;典型无监督任务。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;min_w Σ_i Loss_i(w)+λΩ(w)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;L2 正则惩罚过大的权重。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;正则化是处理过拟合的重要方法。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：验证集调超参数，训练集学参数。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释正则化目标。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;训练/验证/测试集&quot;,
+      &quot;过拟合/欠拟合&quot;,
+      &quot;正则化&quot;,
+      &quot;近似/估计误差&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;看数据划分&quot;,
+      &quot;判断学习曲线&quot;,
+      &quot;背正则化公式&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;过拟合、欠拟合、验证集、测试集、正则化&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;误差判断题、正则化理解题&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;无监督学习任务类型&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 4：Machine Learning III
+
+本章核心主题：本章从训练转向泛化：训练误差、测试误差、过拟合、欠拟合、正则化、验证集和无监督学习。
+
+老师重点：训练误差低不是最终目标，验证集和测试集的意义必须分清。
+
+## 1. 泛化与数据划分
+
+### 1.1 二级知识点
+
+- 核心概念：最终关心未见样本上的表现。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：刷熟训练题不等于考试会做新题。
+- 老师重点：训练误差低不代表测试好。
+- 易错点：易错：反复用测试集调参会污染测试集。
+- 考点：比较训练集、验证集、测试集。
+
+### 1.2 训练误差
+
+- 类型：核心概念
+- 说明：模型在训练集上的错误。
+
+### 1.3 测试误差
+
+- 类型：核心概念
+- 说明：模型在未参与训练数据上的错误。
+
+### 1.4 验证集
+
+- 类型：核心概念
+- 说明：用于调参和选模型。
+
+### 1.5 测试集
+
+- 类型：易错点
+- 说明：只用于最终评估，不能反复调参。
+
+## 2. 过拟合与欠拟合
+
+### 2.1 二级知识点
+
+- 核心概念：模型复杂度和数据规模不匹配会导致泛化问题。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：高次多项式拟合少量噪声点容易过拟合。
+- 老师重点：泛化问题是 ML 的核心考点。
+- 易错点：易错：模型越复杂不一定越好。
+- 考点：根据训练/测试误差判断过拟合或欠拟合。
+
+### 2.2 过拟合
+
+- 类型：核心概念
+- 说明：训练好、测试差，模型记住噪声。
+
+### 2.3 欠拟合
+
+- 类型：核心概念
+- 说明：训练和测试都差，模型能力不足或训练不足。
+
+### 2.4 模型复杂度
+
+- 类型：核心概念
+- 说明：参数、特征、深度等影响拟合能力。
+
+### 2.5 数据规模
+
+- 类型：核心概念
+- 说明：更多高质量数据通常能降低估计误差。
+
+## 3. 误差分解
+
+### 3.1 二级知识点
+
+- 核心概念：区分表示不够还是数据不够。
+- 公式/规则：generalization gap = test error − train error
+- 典型例子：线性模型拟合强非线性数据是近似误差。
+- 老师重点：要能判断错误来自哪里。
+- 易错点：易错：把所有测试差都归因于过拟合。
+- 考点：解释近似误差与估计误差。
+
+### 3.2 近似误差
+
+- 类型：核心概念
+- 说明：假设类太弱，无法表示真实规律。
+
+### 3.3 估计误差
+
+- 类型：核心概念
+- 说明：数据有限导致学到的参数偏离最优。
+
+### 3.4 泛化差距
+
+- 类型：公式/推导
+- 说明：测试误差与训练误差之差。
+
+### 3.5 偏差-方差直觉
+
+- 类型：图示/流程
+- 说明：太简单偏差大，太复杂方差大。
+
+## 4. 正则化与无监督学习
+
+### 4.1 二级知识点
+
+- 核心概念：通过限制复杂度或寻找数据结构提高学习质量。
+- 公式/规则：min_w Σ_i Loss_i(w)+λΩ(w)
+- 典型例子：L2 正则惩罚过大的权重。
+- 老师重点：正则化是处理过拟合的重要方法。
+- 易错点：易错：验证集调超参数，训练集学参数。
+- 考点：解释正则化目标。
+
+### 4.2 正则化
+
+- 类型：核心概念
+- 说明：在目标函数中加入复杂度惩罚。
+
+### 4.3 超参数
+
+- 类型：核心概念
+- 说明：训练前设定，如学习率、正则强度。
+
+### 4.4 无监督学习
+
+- 类型：核心概念
+- 说明：无标签时发现结构、聚类或低维表示。
+
+### 4.5 聚类/降维
+
+- 类型：图示/流程
+- 说明：典型无监督任务。
+
+## 复习路线
+
+- 20 分钟：训练/验证/测试集；过拟合/欠拟合；正则化；近似/估计误差
+- 1 小时：看数据划分；判断学习曲线；背正则化公式
+- 必背：过拟合、欠拟合、验证集、测试集、正则化
+- 需要做题：误差判断题、正则化理解题
+- 理解即可：无监督学习任务类型</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 4：Machine Learning III</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

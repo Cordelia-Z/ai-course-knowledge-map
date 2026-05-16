@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课堂纪要重点：全课老师强重点｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="13_logic2.html">← 上一章</a><a href="../overview.html">回到总览 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 14 · 课堂重点总复盘</p><h1>课堂纪要重点：全课老师强调内容</h1><p class="subtitle">本页把课堂笔记中的老师强调点转成总复习重点，帮助把 PPT 知识与考试答题语言统一。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>人工智能课堂记录重点.txt</span></div><div class="meta-item"><b>所属模块</b><span>课堂重点总复盘</span></div><div class="meta-item"><b>老师重点</b><span>不要只背算法名，要先说清楚建模对象：特征、状态、变量、概率关系或逻辑命题是什么。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>课堂重点总复盘</h2><p>本页把笔记纪要中的老师强调点转成总复习重点，帮助把 PPT 知识与考试答题语言统一。</p></div><div><p><b>老师重点</b></p><p>不要只背算法名，要先说清楚建模对象：特征、状态、变量、概率关系或逻辑命题是什么。</p></div></aside><div class="branches"><article class="branch searchable"><h3>全课主线</h3><p class="summary">智能体在环境中进行表示、学习、决策与推理。</p><div class="node-grid"><div class="node searchable"><b>先建模</b><small>任何算法题先问输入、输出、状态/变量/特征/命题。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>再计算</b><small>公式和算法在模型清楚后执行。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>最后解释</b><small>结果要回到问题语义。</small><div class="tag-row"><span class="tag exam">考点</span></div></div><div class="node searchable"><b>模块比较</b><small>说清 ML、MDP、CSP、BN、Logic 的适用场景。</small><div class="tag-row"><span class="tag exam">考点</span></div></div></div></article><article class="branch searchable"><h3>机器学习重点</h3><p class="summary">特征、损失、优化、泛化是四件套。</p><div class="node-grid"><div class="node searchable"><b>特征决定上限</b><small>模型只能利用特征中存在的信息。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>SGD</b><small>沿负梯度方向逐步降低损失。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>泛化</b><small>训练好不代表测试好。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>验证/测试</b><small>验证集调参，测试集最终评估。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article><article class="branch searchable"><h3>MDP/RL 重点</h3><p class="summary">MDP 是概率奖励序列决策，RL 是未知模型下的交互学习。</p><div class="node-grid"><div class="node searchable"><b>MDP 五元组</b><small>S,A,T,R,γ 是入口。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>V/Q 区分</b><small>V 看状态，Q 看状态-行动。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div><div class="node searchable"><b>价值迭代</b><small>Bellman 最优更新。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>Q-learning</b><small>未知 T/R 时从经验更新 Q。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article><article class="branch searchable"><h3>CSP/BN/Logic 重点</h3><p class="summary">三者都做推理，但表示方式不同。</p><div class="node-grid"><div class="node searchable"><b>CSP</b><small>变量、域、约束；搜索与剪枝。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>BN/HMM</b><small>随机变量、DAG、CPD；概率分解和动态推理。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>filtering/smoothing</b><small>前者看当前以前，后者用未来证据。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div><div class="node searchable"><b>Logic</b><small>语法、语义、模型、蕴涵、CNF 和归结。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 全课主线</h3><p>智能体在环境中进行表示、学习、决策与推理。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>导航任务可从 MDP 状态行动奖励，也可从 CSP 变量约束建模。</li></ul>
+<h4>老师强调点</h4><ul><li>建模优先是贯穿全课重点。</li></ul>
+<h4>易错点</h4><ul><li>易错：只写公式不解释变量含义。</li></ul>
+<h4>考试可能考法</h4><ul><li>模块比较题。</li></ul></article><article class="struct-card searchable"><h3>2. 机器学习重点</h3><p>特征、损失、优化、泛化是四件套。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>w←w−η∇Loss</li></ul>
+<h4>典型例子</h4><ul><li>给训练误差和测试误差判断过拟合。</li></ul>
+<h4>老师强调点</h4><ul><li>特征和泛化反复强调。</li></ul>
+<h4>易错点</h4><ul><li>易错：把神经网络当脱离损失的黑箱。</li></ul>
+<h4>考试可能考法</h4><ul><li>SGD 和过拟合辨析。</li></ul></article><article class="struct-card searchable"><h3>3. MDP/RL 重点</h3><p>MDP 是概率奖励序列决策，RL 是未知模型下的交互学习。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>V(s)=max_a Q(s,a)</li><li>Q←(1−η)Q+η[r+γmaxQ&#x27;]</li></ul>
+<h4>典型例子</h4><ul><li>穿越火山程序是理论到代码的核心样例。</li></ul>
+<h4>老师强调点</h4><ul><li>V/Q 和价值迭代是高频重点。</li></ul>
+<h4>易错点</h4><ul><li>易错：策略评估和价值迭代混淆。</li></ul>
+<h4>考试可能考法</h4><ul><li>价值迭代和 Q-learning 手算。</li></ul></article><article class="struct-card searchable"><h3>4. CSP/BN/Logic 重点</h3><p>三者都做推理，但表示方式不同。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>BN: P=∏CPD</li><li>Logic: KB∧¬φ⇒□</li></ul>
+<h4>典型例子</h4><ul><li>CSP 适合约束满足，BN 适合不确定性，Logic 适合规则证明。</li></ul>
+<h4>老师强调点</h4><ul><li>表示方式决定推理算法。</li></ul>
+<h4>易错点</h4><ul><li>易错：把因子图、BN 和逻辑规则混为一谈。</li></ul>
+<h4>考试可能考法</h4><ul><li>模块比较与易错辨析。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>机器学习重点</h3><span class="formula">w←w−η∇Loss</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>MDP/RL 重点</h3><span class="formula">V(s)=max_a Q(s,a)</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>MDP/RL 重点</h3><span class="formula">Q←(1−η)Q+η[r+γmaxQ&#x27;]</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>CSP/BN/Logic 重点</h3><span class="formula">BN: P=∏CPD</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>CSP/BN/Logic 重点</h3><span class="formula">Logic: KB∧¬φ⇒□</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>全课主线</li><li>每个模块一句话</li><li>公式抓手</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>按 ML→MDP→CSP→BN→Logic 复述入口</li><li>每模块做一题</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>V/Q、训练/测试、AC-3、BN 分解、CNF/归结</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>模块比较、公式手算、算法流程</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>课程范式之间的联系</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>01 绪论与智能体</b><a href="01_intro.html">第一讲：人工智能与类脑计算绪论</a></div><div class="relation-card"><b>02 机器学习 I</b><a href="02_ml1.html">Lecture 2：Machine Learning I</a></div><div class="relation-card"><b>05 MDP I</b><a href="05_mdp1.html">Lecture 7：MDPs I</a></div><div class="relation-card"><b>08 CSP I</b><a href="08_csp1.html">Lecture 11：CSPs I</a></div><div class="relation-card"><b>10 贝叶斯网络 I</b><a href="10_bn1.html">Lecture 13：Bayesian Networks I</a></div><div class="relation-card"><b>12 逻辑 I</b><a href="12_logic1.html">Lecture 16：Logic I</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;课堂笔记重点：全课老师强调重点&quot;,
+  &quot;material&quot;: &quot;人工智能课堂记录重点.txt&quot;,
+  &quot;core_theme&quot;: &quot;本页把课纪要中的老师强调点转成总复习重点，帮助把 PPT 知识与考试答题语言统一。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;全课主线&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;智能体在环境中进行表示、学习、决策与推理。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;先建模&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;任何算法题先问输入、输出、状态/变量/特征/命题。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;再计算&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;公式和算法在模型清楚后执行。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;最后解释&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;结果要回到问题语义。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;模块比较&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;说清 ML、MDP、CSP、BN、Logic 的适用场景。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;导航任务可从 MDP 状态行动奖励，也可从 CSP 变量约束建模。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;建模优先是贯穿全课重点。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：只写公式不解释变量含义。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;模块比较题。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;机器学习重点&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;特征、损失、优化、泛化是四件套。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;特征决定上限&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;模型只能利用特征中存在的信息。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;SGD&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;沿负梯度方向逐步降低损失。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;泛化&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;训练好不代表测试好。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;验证/测试&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;验证集调参，测试集最终评估。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;w←w−η∇Loss&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;给训练误差和测试误差判断过拟合。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;特征和泛化反复强调。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把神经网络当脱离损失的黑箱。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;SGD 和过拟合辨析。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;MDP/RL 重点&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;MDP 是概率奖励序列决策，RL 是未知模型下的交互学习。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;MDP 五元组&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;S,A,T,R,γ 是入口。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;V/Q 区分&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;V 看状态，Q 看状态-行动。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;价值迭代&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;Bellman 最优更新。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;Q-learning&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;未知 T/R 时从经验更新 Q。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;V(s)=max_a Q(s,a)&quot;,
+        &quot;Q←(1−η)Q+η[r+γmaxQ&#x27;]&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;穿越火山程序是理论到代码的核心样例。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;V/Q 和价值迭代是高频重点。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：策略评估和价值迭代混淆。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;价值迭代和 Q-learning 手算。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;CSP/BN/Logic 重点&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;三者都做推理，但表示方式不同。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;CSP&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;变量、域、约束；搜索与剪枝。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;BN/HMM&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;随机变量、DAG、CPD；概率分解和动态推理。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;filtering/smoothing&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;前者看当前以前，后者用未来证据。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;Logic&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;语法、语义、模型、蕴涵、CNF 和归结。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;BN: P=∏CPD&quot;,
+        &quot;Logic: KB∧¬φ⇒□&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;CSP 适合约束满足，BN 适合不确定性，Logic 适合规则证明。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;表示方式决定推理算法。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把因子图、BN 和逻辑规则混为一谈。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;模块比较与易错辨析。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;全课主线&quot;,
+      &quot;每个模块一句话&quot;,
+      &quot;公式抓手&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;按 ML→MDP→CSP→BN→Logic 复述入口&quot;,
+      &quot;每模块做一题&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;V/Q、训练/测试、AC-3、BN 分解、CNF/归结&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;模块比较、公式手算、算法流程&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;课程范式之间的联系&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># 课程纪要重点：全课老师强调重点
+
+本章核心主题：本页把课堂笔记纪要中的老师强调点转成总复习重点，帮助把 PPT 知识与考试答题语言统一。
+
+老师重点：不要只背算法名，要先说清楚建模对象：特征、状态、变量、概率关系或逻辑命题是什么。
+
+## 1. 全课主线
+
+### 1.1 二级知识点
+
+- 核心概念：智能体在环境中进行表示、学习、决策与推理。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：导航任务可从 MDP 状态行动奖励，也可从 CSP 变量约束建模。
+- 老师重点：建模优先是贯穿全课的重点。
+- 易错点：易错：只写公式不解释变量含义。
+- 考点：模块比较题。
+
+### 1.2 先建模
+
+- 类型：老师重点
+- 说明：任何算法题先问输入、输出、状态/变量/特征/命题。
+
+### 1.3 再计算
+
+- 类型：老师重点
+- 说明：公式和算法在模型清楚后执行。
+
+### 1.4 最后解释
+
+- 类型：考点
+- 说明：结果要回到问题语义。
+
+### 1.5 模块比较
+
+- 类型：考点
+- 说明：说清 ML、MDP、CSP、BN、Logic 的适用场景。
+
+## 2. 机器学习重点
+
+### 2.1 二级知识点
+
+- 核心概念：特征、损失、优化、泛化是四件套。
+- 公式/规则：w←w−η∇Loss
+- 典型例子：给训练误差和测试误差判断过拟合。
+- 老师重点：特征和泛化反复强调。
+- 易错点：易错：把神经网络当脱离损失的黑箱。
+- 考点：SGD 和过拟合辨析。
+
+### 2.2 特征决定上限
+
+- 类型：老师重点
+- 说明：模型只能利用特征中存在的信息。
+
+### 2.3 SGD
+
+- 类型：公式/推导
+- 说明：沿负梯度方向逐步降低损失。
+
+### 2.4 泛化
+
+- 类型：老师重点
+- 说明：训练好不代表测试好。
+
+### 2.5 验证/测试
+
+- 类型：易错点
+- 说明：验证集调参，测试集最终评估。
+
+## 3. MDP/RL 重点
+
+### 3.1 二级知识点
+
+- 核心概念：MDP 是概率奖励序列决策，RL 是未知模型下的交互学习。
+- 公式/规则：V(s)=max_a Q(s,a)；Q←(1−η)Q+η[r+γmaxQ&#x27;]
+- 典型例子：穿越火山程序是理论到代码的核心样例。
+- 老师重点：V/Q 和价值迭代是高频重点。
+- 易错点：易错：策略评估和价值迭代混淆。
+- 考点：价值迭代和 Q-learning 手算。
+
+### 3.2 MDP 五元组
+
+- 类型：老师重点
+- 说明：S,A,T,R,γ 是入口。
+
+### 3.3 V/Q 区分
+
+- 类型：易错点
+- 说明：V 看状态，Q 看状态-行动。
+
+### 3.4 价值迭代
+
+- 类型：公式/推导
+- 说明：Bellman 最优更新。
+
+### 3.5 Q-learning
+
+- 类型：公式/推导
+- 说明：未知 T/R 时从经验更新 Q。
+
+## 4. CSP/BN/Logic 重点
+
+### 4.1 二级知识点
+
+- 核心概念：三者都做推理，但表示方式不同。
+- 公式/规则：BN: P=∏CPD；Logic: KB∧¬φ⇒□
+- 典型例子：CSP 适合约束满足，BN 适合不确定性，Logic 适合规则证明。
+- 老师重点：表示方式决定推理算法。
+- 易错点：易错：把因子图、BN 和逻辑规则混为一谈。
+- 考点：模块比较与易错辨析。
+
+### 4.2 CSP
+
+- 类型：老师重点
+- 说明：变量、域、约束；搜索与剪枝。
+
+### 4.3 BN/HMM
+
+- 类型：老师重点
+- 说明：随机变量、DAG、CPD；概率分解和动态推理。
+
+### 4.4 filtering/smoothing
+
+- 类型：易错点
+- 说明：前者看当前以前，后者用未来证据。
+
+### 4.5 Logic
+
+- 类型：老师重点
+- 说明：语法、语义、模型、蕴涵、CNF 和归结。
+
+## 复习路线
+
+- 20 分钟：全课主线；每个模块一句话；公式抓手
+- 1 小时：按 ML→MDP→CSP→BN→Logic 复述入口；每模块做一题
+- 必背：V/Q、训练/测试、AC-3、BN 分解、CNF/归结
+- 需要做题：模块比较、公式手算、算法流程
+- 理解即可：课程范式之间的联系</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · 课堂纪要重点：全课老师强调重点</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

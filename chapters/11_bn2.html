@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 14：Bayesian Networks II｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="10_bn1.html">← 上一章</a><a href="12_logic1.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 11 · 贝叶斯网络 II</p><h1>Lecture 14：Bayesian Networks II</h1><p class="subtitle">本章进入 BN 推理和 HMM 对象跟踪，重点是 filtering、smoothing、forward-backward、Gibbs sampling 和 particle filtering。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 14 - Bayesian networks II.pdf</span></div><div class="meta-item"><b>所属模块</b><span>贝叶斯网络 II</span></div><div class="meta-item"><b>老师重点</b><span>filtering 和 smoothing 必须分清；精确推理太贵时才需要采样和粒子滤波。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>贝叶斯网络 II</h2><p>本章进入 BN 推理和 HMM 对象跟踪，重点是 filtering、smoothing、forward-backward、Gibbs sampling 和 particle filtering。</p></div><div><p><b>老师重点</b></p><p>filtering 和 smoothing 必须分清；精确推理太贵时才需要采样和粒子滤波。</p></div></aside><div class="branches"><article class="branch searchable"><h3>BN 推理复习</h3><p class="summary">给定证据，计算查询变量后验分布。</p><div class="node-grid"><div class="node searchable"><b>后验概率</b><small>观测证据后目标变量的条件概率。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>隐藏变量求和</b><small>未观测变量需要边缘化。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>精确推理</b><small>完整计算概率，可能复杂度很高。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>近似推理</b><small>用采样或粒子近似分布。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>HMM 对象跟踪</h3><p class="summary">隐藏状态链和观测链表示动态不确定问题。</p><div class="node-grid"><div class="node searchable"><b>隐藏状态 C_t</b><small>真实但不可直接观测的状态。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>观测 E_t</b><small>传感器给出的可见信息。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>转移模型</b><small>P(C_t|C_{t-1})。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>观测模型</b><small>P(E_t|C_t)。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div></div></article><article class="branch searchable"><h3>Filtering / Smoothing</h3><p class="summary">两者都推断状态，但使用证据范围不同。</p><div class="node-grid"><div class="node searchable"><b>filtering</b><small>用当前以前证据推断当前状态。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>smoothing</b><small>用过去和未来证据推断历史状态。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>forward message</b><small>从前向后传递证据信息。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>backward message</b><small>从后向前传递未来证据。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>Gibbs 与粒子滤波</h3><p class="summary">精确推理成本高时用采样近似。</p><div class="node-grid"><div class="node searchable"><b>Gibbs sampling</b><small>固定其他变量，反复重采样一个变量。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>particle filtering</b><small>用粒子集合代表状态分布。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>重采样</b><small>保留更符合证据的粒子。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>近似误差</b><small>采样有随机误差，粒子越多越稳定。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. BN 推理复习</h3><p>给定证据，计算查询变量后验分布。</p>
+<h4>关键概念</h4><ul><li><b>后验概率</b>：观测证据后目标变量的条件概率。</li><li><b>精确推理</b>：完整计算概率，可能复杂度很高。</li><li><b>近似推理</b>：用采样或粒子近似分布。</li></ul>
+<h4>公式/规则</h4><ul><li><b>隐藏变量求和</b>：未观测变量需要边缘化。</li></ul>
+<h4>典型例子</h4><ul><li>已知传感器读数，推断对象位置概率。</li></ul>
+<h4>老师强调点</h4><ul><li>证据是条件，不是查询结果。</li></ul>
+<h4>易错点</h4><ul><li>易错：把证据变量当查询变量。</li></ul>
+<h4>考试可能考法</h4><ul><li>说明概率查询变量角色。</li></ul></article><article class="struct-card searchable"><h3>2. HMM 对象跟踪</h3><p>隐藏状态链和观测链表示动态不确定问题。</p>
+<h4>关键概念</h4><ul><li><b>隐藏状态 C_t</b>：真实但不可直接观测的状态。</li><li><b>观测 E_t</b>：传感器给出的可见信息。</li></ul>
+<h4>公式/规则</h4><ul><li>P(C_{1:T},E_{1:T})=P(C_1)∏P(E_t|C_t)∏P(C_t|C_{t-1})</li></ul>
+<h4>典型例子</h4><ul><li>真实位置不可见，传感器读数带噪声。</li></ul>
+<h4>老师强调点</h4><ul><li>观测不是状态，只是证据。</li></ul>
+<h4>易错点</h4><ul><li>易错：混淆隐藏状态和观测。</li></ul>
+<h4>考试可能考法</h4><ul><li>画 HMM 结构。</li></ul></article><article class="struct-card searchable"><h3>3. Filtering / Smoothing</h3><p>两者都推断状态，但使用证据范围不同。</p>
+<h4>关键概念</h4><ul><li><b>filtering</b>：用当前以前证据推断当前状态。</li><li><b>smoothing</b>：用过去和未来证据推断历史状态。</li></ul>
+<h4>公式/规则</h4><ul><li>Filtering: P(C_t|e_{1:t})</li><li>Smoothing: P(C_t|e_{1:T}), T&gt;t</li></ul>
+<h4>典型例子</h4><ul><li>实时定位是 filtering；完整轨迹后修正昨天位置是 smoothing。</li></ul>
+<h4>老师强调点</h4><ul><li>filtering 不用未来证据，smoothing 会用。</li></ul>
+<h4>易错点</h4><ul><li>易错：把 smoothing 当成当前估计。</li></ul>
+<h4>考试可能考法</h4><ul><li>区分 filtering 和 smoothing。</li></ul></article><article class="struct-card searchable"><h3>4. Gibbs 与粒子滤波</h3><p>精确推理成本高时用采样近似。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>用 1000 个可能位置粒子近似目标位置分布。</li></ul>
+<h4>老师强调点</h4><ul><li>粒子滤波适合动态跟踪。</li></ul>
+<h4>易错点</h4><ul><li>易错：粒子滤波不是精确概率表。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释粒子滤波流程。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>HMM 对象跟踪</h3><span class="formula">P(C_{1:T},E_{1:T})=P(C_1)∏P(E_t|C_t)∏P(C_t|C_{t-1})</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>Filtering / Smoothing</h3><span class="formula">Filtering: P(C_t|e_{1:t})</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>Filtering / Smoothing</h3><span class="formula">Smoothing: P(C_t|e_{1:T}), T&gt;t</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>HMM</li><li>filtering/smoothing</li><li>forward-backward</li><li>particle filtering</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>画 HMM</li><li>比较 filtering/smoothing</li><li>解释粒子滤波</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>HMM 两类模型、filtering/smoothing</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>判断推理类型、手推 forward</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>近似推理意义</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>10 贝叶斯网络 I</b><a href="10_bn1.html">Lecture 13：Bayesian Networks I</a></div><div class="relation-card"><b>09 CSP II</b><a href="09_csp2.html">Lecture 12：CSPs II</a></div><div class="relation-card"><b>07 强化学习</b><a href="07_rl.html">Lecture 8：MDPs II / Reinforcement Learning</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 14：Bayesian Networks II&quot;,
+  &quot;material&quot;: &quot;Lecture 14 - Bayesian networks II.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章进入 BN 推理和 HMM 对象跟踪，重点是 filtering、smoothing、forward-backward、Gibbs sampling 和 particle filtering。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;BN 推理复习&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;给定证据，计算查询变量后验分布。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;后验概率&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;观测证据后目标变量的条件概率。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;隐藏变量求和&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;未观测变量需要边缘化。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;精确推理&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;完整计算概率，可能复杂度很高。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;近似推理&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用采样或粒子近似分布。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;已知传感器读数，推断对象位置概率。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;证据是条件，不是查询结果。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把证据变量当查询变量。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;说明概率查询变量角色。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;HMM 对象跟踪&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;隐藏状态链和观测链表示动态不确定问题。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;隐藏状态 C_t&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;真实但不可直接观测的状态。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;观测 E_t&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;传感器给出的可见信息。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;转移模型&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;P(C_t|C_{t-1})。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;观测模型&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;P(E_t|C_t)。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;P(C_{1:T},E_{1:T})=P(C_1)∏P(E_t|C_t)∏P(C_t|C_{t-1})&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;真实位置不可见，传感器读数带噪声。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;观测不是状态，只是证据。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：混淆隐藏状态和观测。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;画 HMM 结构。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Filtering / Smoothing&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;两者都推断状态，但使用证据范围不同。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;filtering&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用当前以前证据推断当前状态。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;smoothing&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用过去和未来证据推断历史状态。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;forward message&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;从前向后传递证据信息。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;backward message&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;从后向前传递未来证据。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;Filtering: P(C_t|e_{1:t})&quot;,
+        &quot;Smoothing: P(C_t|e_{1:T}), T&gt;t&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;实时定位是 filtering；完整轨迹后修正昨天位置是 smoothing。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;filtering 不用未来证据，smoothing 会用。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把 smoothing 当成当前估计。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;区分 filtering 和 smoothing。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Gibbs 与粒子滤波&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;精确推理成本高时用采样近似。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;Gibbs sampling&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;固定其他变量，反复重采样一个变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;particle filtering&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;用粒子集合代表状态分布。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;重采样&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;保留更符合证据的粒子。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;近似误差&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;采样有随机误差，粒子越多越稳定。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;用 1000 个可能位置粒子近似目标位置分布。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;粒子滤波适合动态跟踪。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：粒子滤波不是精确概率表。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释粒子滤波流程。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;HMM&quot;,
+      &quot;filtering/smoothing&quot;,
+      &quot;forward-backward&quot;,
+      &quot;particle filtering&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;画 HMM&quot;,
+      &quot;比较 filtering/smoothing&quot;,
+      &quot;解释粒子滤波&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;HMM 两类模型、filtering/smoothing&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;判断推理类型、手推 forward&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;近似推理意义&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 14：Bayesian Networks II
+
+本章核心主题：本章进入 BN 推理和 HMM 对象跟踪，重点是 filtering、smoothing、forward-backward、Gibbs sampling 和 particle filtering。
+
+老师重点：filtering 和 smoothing 必须分清；精确推理太贵时才需要采样和粒子滤波。
+
+## 1. BN 推理复习
+
+### 1.1 二级知识点
+
+- 核心概念：给定证据，计算查询变量后验分布。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：已知传感器读数，推断对象位置概率。
+- 老师重点：证据是条件，不是查询结果。
+- 易错点：易错：把证据变量当查询变量。
+- 考点：说明概率查询变量角色。
+
+### 1.2 后验概率
+
+- 类型：核心概念
+- 说明：观测证据后目标变量的条件概率。
+
+### 1.3 隐藏变量求和
+
+- 类型：公式/推导
+- 说明：未观测变量需要边缘化。
+
+### 1.4 精确推理
+
+- 类型：核心概念
+- 说明：完整计算概率，可能复杂度很高。
+
+### 1.5 近似推理
+
+- 类型：核心概念
+- 说明：用采样或粒子近似分布。
+
+## 2. HMM 对象跟踪
+
+### 2.1 二级知识点
+
+- 核心概念：隐藏状态链和观测链表示动态不确定问题。
+- 公式/规则：P(C_{1:T},E_{1:T})=P(C_1)∏P(E_t|C_t)∏P(C_t|C_{t-1})
+- 典型例子：真实位置不可见，传感器读数带噪声。
+- 老师重点：观测不是状态，只是证据。
+- 易错点：易错：混淆隐藏状态和观测。
+- 考点：画 HMM 结构。
+
+### 2.2 隐藏状态 C_t
+
+- 类型：核心概念
+- 说明：真实但不可直接观测的状态。
+
+### 2.3 观测 E_t
+
+- 类型：核心概念
+- 说明：传感器给出的可见信息。
+
+### 2.4 转移模型
+
+- 类型：公式/推导
+- 说明：P(C_t|C_{t-1})。
+
+### 2.5 观测模型
+
+- 类型：公式/推导
+- 说明：P(E_t|C_t)。
+
+## 3. Filtering / Smoothing
+
+### 3.1 二级知识点
+
+- 核心概念：两者都推断状态，但使用证据范围不同。
+- 公式/规则：Filtering: P(C_t|e_{1:t})；Smoothing: P(C_t|e_{1:T}), T&gt;t
+- 典型例子：实时定位是 filtering；完整轨迹后修正昨天位置是 smoothing。
+- 老师重点：filtering 不用未来证据，smoothing 会用。
+- 易错点：易错：把 smoothing 当成当前估计。
+- 考点：区分 filtering 和 smoothing。
+
+### 3.2 filtering
+
+- 类型：核心概念
+- 说明：用当前以前证据推断当前状态。
+
+### 3.3 smoothing
+
+- 类型：核心概念
+- 说明：用过去和未来证据推断历史状态。
+
+### 3.4 forward message
+
+- 类型：图示/流程
+- 说明：从前向后传递证据信息。
+
+### 3.5 backward message
+
+- 类型：图示/流程
+- 说明：从后向前传递未来证据。
+
+## 4. Gibbs 与粒子滤波
+
+### 4.1 二级知识点
+
+- 核心概念：精确推理成本高时用采样近似。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：用 1000 个可能位置粒子近似目标位置分布。
+- 老师重点：粒子滤波适合动态跟踪。
+- 易错点：易错：粒子滤波不是精确概率表。
+- 考点：解释粒子滤波流程。
+
+### 4.2 Gibbs sampling
+
+- 类型：图示/流程
+- 说明：固定其他变量，反复重采样一个变量。
+
+### 4.3 particle filtering
+
+- 类型：图示/流程
+- 说明：用粒子集合代表状态分布。
+
+### 4.4 重采样
+
+- 类型：图示/流程
+- 说明：保留更符合证据的粒子。
+
+### 4.5 近似误差
+
+- 类型：易错点
+- 说明：采样有随机误差，粒子越多越稳定。
+
+## 复习路线
+
+- 20 分钟：HMM；filtering/smoothing；forward-backward；particle filtering
+- 1 小时：画 HMM；比较 filtering/smoothing；解释粒子滤波
+- 必背：HMM 两类模型、filtering/smoothing
+- 需要做题：判断推理类型、手推 forward
+- 理解即可：近似推理意义</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 14：Bayesian Networks II</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第一讲：人工智能与类脑计算绪论｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="../overview.html">← 总览</a><a href="02_ml1.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 01 · 绪论与智能体</p><h1>第一讲：人工智能与类脑计算绪论</h1><p class="subtitle">本章是整门课入口：定义智能、人工智能与类脑计算，理解智能体如何在任务环境中感知、决策和行动。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>第一讲-人工智能与类脑计算绪论.pdf</span></div><div class="meta-item"><b>所属模块</b><span>绪论与智能体</span></div><div class="meta-item"><b>老师重点</b><span>不要把 AI 等同于某个工具或算法；先看任务、环境、智能体、目标和评价方式。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>绪论与智能体</h2><p>本章是整门课入口：定义智能、人工智能与类脑计算，理解智能体如何在任务环境中感知、决策和行动。</p></div><div><p><b>老师重点</b></p><p>不要把 AI 等同于某个工具或算法；先看任务、环境、智能体、目标和评价方式。</p></div></aside><div class="branches"><article class="branch searchable"><h3>智能与人工智能定义</h3><p class="summary">把日常意义上的智能转成可建模、可计算、可评价的课程对象。</p><div class="node-grid"><div class="node searchable"><b>智能</b><small>在环境中感知、学习、推理、适应并达成目标的能力。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>人类智能</b><small>包含先验、经验、记忆、推理、语言和泛化。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>人工智能</b><small>研究如何让机器完成感知、预测、推理、规划和决策任务。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>AI 任务</b><small>分类、回归、搜索、规划、推理、交互和控制。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>智能体与任务环境</h3><p class="summary">AI 问题首先要问：谁在行动？环境是什么？目标如何评价？</p><div class="node-grid"><div class="node searchable"><b>智能体 Agent</b><small>通过感知输入和行动输出与环境闭环交互的系统。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>任务环境</b><small>智能体被放置其中并接受评价的问题空间。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>性能度量</b><small>评价智能体是否完成目标，决定优化方向。</small><div class="tag-row"><span class="tag exam">考点</span></div></div><div class="node searchable"><b>感知-行动闭环</b><small>环境→感知→智能体→行动→环境反馈。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>任务环境分类</h3><p class="summary">用可观测性、随机性、动态性等维度判断问题难度。</p><div class="node-grid"><div class="node searchable"><b>完全/部分可观测</b><small>智能体能否看到决策所需的完整状态。</small><div class="tag-row"><span class="tag exam">考点</span></div></div><div class="node searchable"><b>确定/随机</b><small>同一行动是否总导致同一结果。</small><div class="tag-row"><span class="tag exam">考点</span></div></div><div class="node searchable"><b>静态/动态</b><small>智能体思考时环境是否继续变化。</small><div class="tag-row"><span class="tag exam">考点</span></div></div><div class="node searchable"><b>离散/连续</b><small>状态、行动或时间是否可枚举。</small><div class="tag-row"><span class="tag exam">考点</span></div></div><div class="node searchable"><b>单/多智能体</b><small>是否存在其他智能体共同影响环境。</small><div class="tag-row"><span class="tag exam">考点</span></div></div></div></article><article class="branch searchable"><h3>类脑计算与研究范式</h3><p class="summary">理解连接主义、人类认知先验和类脑计算的位置。</p><div class="node-grid"><div class="node searchable"><b>连接主义</b><small>用大量简单单元及连接权重形成表示和学习能力。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>白板理论争议</b><small>人类认知并非完全从零学习，先验会影响学习效率。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>认知先验</b><small>先验帮助系统更快泛化，也提醒我们不能只堆数据。</small><div class="tag-row"><span class="tag teacher">老师重点</span></div></div><div class="node searchable"><b>研究维度</b><small>从任务、表示、学习、推理、决策和环境理解 AI。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 智能与人工智能定义</h3><p>把日常意义上的智能转成可建模、可计算、可评价的课程对象。</p>
+<h4>关键概念</h4><ul><li><b>智能</b>：在环境中感知、学习、推理、适应并达成目标的能力。</li><li><b>人类智能</b>：包含先验、经验、记忆、推理、语言和泛化。</li><li><b>人工智能</b>：研究如何让机器完成感知、预测、推理、规划和决策任务。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>图像识别是感知任务；路线规划是搜索/决策任务。</li></ul>
+<h4>老师强调点</h4><ul><li>AI 是围绕任务和环境展开的建模体系。</li></ul>
+<h4>易错点</h4><ul><li>易错：把 AI 等同于深度学习或聊天机器人。</li></ul>
+<h4>考试可能考法</h4><ul><li>解释智能、人工智能、人类智能的关系。</li></ul></article><article class="struct-card searchable"><h3>2. 智能体与任务环境</h3><p>AI 问题首先要问：谁在行动？环境是什么？目标如何评价？</p>
+<h4>关键概念</h4><ul><li><b>智能体 Agent</b>：通过感知输入和行动输出与环境闭环交互的系统。</li><li><b>任务环境</b>：智能体被放置其中并接受评价的问题空间。</li></ul>
+<h4>公式/规则</h4><ul><li>Percept → Agent → Action → Environment → Feedback</li></ul>
+<h4>典型例子</h4><ul><li>自动驾驶：观测道路，选择方向/速度，目标是安全与效率。</li></ul>
+<h4>老师强调点</h4><ul><li>先定义智能体和环境，再讨论算法。</li></ul>
+<h4>易错点</h4><ul><li>易错：只说算法，不说明状态、行动和评价标准。</li></ul>
+<h4>考试可能考法</h4><ul><li>给定任务，指出智能体、环境、行动和性能度量。</li></ul></article><article class="struct-card searchable"><h3>3. 任务环境分类</h3><p>用可观测性、随机性、动态性等维度判断问题难度。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>棋类多为完全可观测、离散、多智能体；医疗诊断常部分可观测且不确定。</li></ul>
+<h4>老师强调点</h4><ul><li>环境分类决定应该用搜索、概率、学习还是决策方法。</li></ul>
+<h4>易错点</h4><ul><li>易错：环境分类要结合具体任务，不能机械套标签。</li></ul>
+<h4>考试可能考法</h4><ul><li>判断一个现实任务的环境类型。</li></ul></article><article class="struct-card searchable"><h3>4. 类脑计算与研究范式</h3><p>理解连接主义、人类认知先验和类脑计算的位置。</p>
+<h4>关键概念</h4><ul><li><b>连接主义</b>：用大量简单单元及连接权重形成表示和学习能力。</li><li><b>白板理论争议</b>：人类认知并非完全从零学习，先验会影响学习效率。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>神经网络是连接主义方法；逻辑推理更强调显式符号规则。</li></ul>
+<h4>老师强调点</h4><ul><li>类脑计算不是简单复制大脑结构，而是借鉴认知机制。</li></ul>
+<h4>易错点</h4><ul><li>易错：把类脑计算理解成神经网络的同义词。</li></ul>
+<h4>考试可能考法</h4><ul><li>说明 AI、连接主义和类脑计算的关系。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>智能体与任务环境</h3><span class="formula">Percept → Agent → Action → Environment → Feedback</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>智能体与任务环境</li><li>环境分类五维度</li><li>AI 任务视角</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>画感知-行动闭环</li><li>用两个例子判断环境类型</li><li>比较连接主义与逻辑主义</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>Agent、任务环境、性能度量、环境分类</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>现实任务建模与环境分类</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>AI 发展范式与类脑计算关系</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>02 机器学习 I</b><a href="02_ml1.html">Lecture 2：Machine Learning I</a></div><div class="relation-card"><b>05 MDP I</b><a href="05_mdp1.html">Lecture 7：MDPs I</a></div><div class="relation-card"><b>10 贝叶斯网络 I</b><a href="10_bn1.html">Lecture 13：Bayesian Networks I</a></div><div class="relation-card"><b>12 逻辑 I</b><a href="12_logic1.html">Lecture 16：Logic I</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;第一讲：人工智能与类脑计算绪论&quot;,
+  &quot;material&quot;: &quot;第一讲-人工智能与类脑计算绪论.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章是整门课入口：定义智能、人工智能与类脑计算，理解智能体如何在任务环境中感知、决策和行动。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;智能与人工智能定义&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;把日常意义上的智能转成可建模、可计算、可评价的课程对象。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;智能&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;在环境中感知、学习、推理、适应并达成目标的能力。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;人类智能&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;包含先验、经验、记忆、推理、语言和泛化。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;人工智能&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;研究如何让机器完成感知、预测、推理、规划和决策任务。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;AI 任务&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;分类、回归、搜索、规划、推理、交互和控制。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;图像识别是感知任务；路线规划是搜索/决策任务。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;AI 是围绕任务和环境展开的建模体系。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把 AI 等同于深度学习或聊天机器人。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;解释智能、人工智能、人类智能的关系。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;智能体与任务环境&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;AI 问题首先要问：谁在行动？环境是什么？目标如何评价？&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;智能体 Agent&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;通过感知输入和行动输出与环境闭环交互的系统。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;任务环境&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;智能体被放置其中并接受评价的问题空间。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;性能度量&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;评价智能体是否完成目标，决定优化方向。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;感知-行动闭环&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;环境→感知→智能体→行动→环境反馈。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;Percept → Agent → Action → Environment → Feedback&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;自动驾驶：观测道路，选择方向/速度，目标是安全与效率。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;先定义智能体和环境，再讨论算法。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：只说算法，不说明状态、行动和评价标准。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;给定任务，指出智能体、环境、行动和性能度量。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;任务环境分类&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用可观测性、随机性、动态性等维度判断问题难度。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;完全/部分可观测&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;智能体能否看到决策所需的完整状态。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;确定/随机&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;同一行动是否总导致同一结果。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;静态/动态&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;智能体思考时环境是否继续变化。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;离散/连续&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;状态、行动或时间是否可枚举。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;单/多智能体&quot;,
+          &quot;kind&quot;: &quot;考点&quot;,
+          &quot;desc&quot;: &quot;是否存在其他智能体共同影响环境。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;棋类多为完全可观测、离散、多智能体；医疗诊断常部分可观测且不确定。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;环境分类决定应该用搜索、概率、学习还是决策方法。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：环境分类要结合具体任务，不能机械套标签。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;判断一个现实任务的环境类型。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;类脑计算与研究范式&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;理解连接主义、人类认知先验和类脑计算的位置。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;连接主义&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用大量简单单元及连接权重形成表示和学习能力。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;白板理论争议&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;人类认知并非完全从零学习，先验会影响学习效率。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;认知先验&quot;,
+          &quot;kind&quot;: &quot;老师重点&quot;,
+          &quot;desc&quot;: &quot;先验帮助系统更快泛化，也提醒我们不能只堆数据。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;研究维度&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;从任务、表示、学习、推理、决策和环境理解 AI。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;神经网络是连接主义方法；逻辑推理更强调显式符号规则。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;类脑计算不是简单复制大脑结构，而是借鉴认知机制。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把类脑计算理解成神经网络的同义词。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;说明 AI、连接主义和类脑计算的关系。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;智能体与任务环境&quot;,
+      &quot;环境分类五维度&quot;,
+      &quot;AI 任务视角&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;画感知-行动闭环&quot;,
+      &quot;用两个例子判断环境类型&quot;,
+      &quot;比较连接主义与逻辑主义&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;Agent、任务环境、性能度量、环境分类&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;现实任务建模与环境分类&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;AI 发展范式与类脑计算关系&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># 第一讲：人工智能与类脑计算绪论
+
+本章核心主题：本章是整门课入口：定义智能、人工智能与类脑计算，理解智能体如何在任务环境中感知、决策和行动。
+
+老师重点：不要把 AI 等同于某个工具或算法；先看任务、环境、智能体、目标和评价方式。
+
+## 1. 智能与人工智能定义
+
+### 1.1 二级知识点
+
+- 核心概念：把日常意义上的智能转成可建模、可计算、可评价的课程对象。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：图像识别是感知任务；路线规划是搜索/决策任务。
+- 老师重点：AI 是围绕任务和环境展开的建模体系。
+- 易错点：易错：把 AI 等同于深度学习或聊天机器人。
+- 考点：解释智能、人工智能、人类智能的关系。
+
+### 1.2 智能
+
+- 类型：核心概念
+- 说明：在环境中感知、学习、推理、适应并达成目标的能力。
+
+### 1.3 人类智能
+
+- 类型：核心概念
+- 说明：包含先验、经验、记忆、推理、语言和泛化。
+
+### 1.4 人工智能
+
+- 类型：核心概念
+- 说明：研究如何让机器完成感知、预测、推理、规划和决策任务。
+
+### 1.5 AI 任务
+
+- 类型：图示/流程
+- 说明：分类、回归、搜索、规划、推理、交互和控制。
+
+## 2. 智能体与任务环境
+
+### 2.1 二级知识点
+
+- 核心概念：AI 问题首先要问：谁在行动？环境是什么？目标如何评价？
+- 公式/规则：Percept → Agent → Action → Environment → Feedback
+- 典型例子：自动驾驶：观测道路，选择方向/速度，目标是安全与效率。
+- 老师重点：先定义智能体和环境，再讨论算法。
+- 易错点：易错：只说算法，不说明状态、行动和评价标准。
+- 考点：给定任务，指出智能体、环境、行动和性能度量。
+
+### 2.2 智能体 Agent
+
+- 类型：核心概念
+- 说明：通过感知输入和行动输出与环境闭环交互的系统。
+
+### 2.3 任务环境
+
+- 类型：核心概念
+- 说明：智能体被放置其中并接受评价的问题空间。
+
+### 2.4 性能度量
+
+- 类型：考点
+- 说明：评价智能体是否完成目标，决定优化方向。
+
+### 2.5 感知-行动闭环
+
+- 类型：图示/流程
+- 说明：环境→感知→智能体→行动→环境反馈。
+
+## 3. 任务环境分类
+
+### 3.1 二级知识点
+
+- 核心概念：用可观测性、随机性、动态性等维度判断问题难度。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：棋类多为完全可观测、离散、多智能体；医疗诊断常部分可观测且不确定。
+- 老师重点：环境分类决定应该用搜索、概率、学习还是决策方法。
+- 易错点：易错：环境分类要结合具体任务，不能机械套标签。
+- 考点：判断一个现实任务的环境类型。
+
+### 3.2 完全/部分可观测
+
+- 类型：考点
+- 说明：智能体能否看到决策所需的完整状态。
+
+### 3.3 确定/随机
+
+- 类型：考点
+- 说明：同一行动是否总导致同一结果。
+
+### 3.4 静态/动态
+
+- 类型：考点
+- 说明：智能体思考时环境是否继续变化。
+
+### 3.5 离散/连续
+
+- 类型：考点
+- 说明：状态、行动或时间是否可枚举。
+
+### 3.6 单/多智能体
+
+- 类型：考点
+- 说明：是否存在其他智能体共同影响环境。
+
+## 4. 类脑计算与研究范式
+
+### 4.1 二级知识点
+
+- 核心概念：理解连接主义、人类认知先验和类脑计算的位置。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：神经网络是连接主义方法；逻辑推理更强调显式符号规则。
+- 老师重点：类脑计算不是简单复制大脑结构，而是借鉴认知机制。
+- 易错点：易错：把类脑计算理解成神经网络的同义词。
+- 考点：说明 AI、连接主义和类脑计算的关系。
+
+### 4.2 连接主义
+
+- 类型：核心概念
+- 说明：用大量简单单元及连接权重形成表示和学习能力。
+
+### 4.3 白板理论争议
+
+- 类型：核心概念
+- 说明：人类认知并非完全从零学习，先验会影响学习效率。
+
+### 4.4 认知先验
+
+- 类型：老师重点
+- 说明：先验帮助系统更快泛化，也提醒我们不能只堆数据。
+
+### 4.5 研究维度
+
+- 类型：图示/流程
+- 说明：从任务、表示、学习、推理、决策和环境理解 AI。
+
+## 复习路线
+
+- 20 分钟：智能体与任务环境；环境分类五维度；AI 任务视角
+- 1 小时：画感知-行动闭环；用两个例子判断环境类型；比较连接主义与逻辑主义
+- 必背：Agent、任务环境、性能度量、环境分类
+- 需要做题：现实任务建模与环境分类
+- 理解即可：AI 发展范式与类脑计算关系</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · 第一讲：人工智能与类脑计算绪论</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

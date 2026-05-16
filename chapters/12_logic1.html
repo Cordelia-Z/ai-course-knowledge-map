@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 16：Logic I｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="11_bn2.html">← 上一章</a><a href="13_logic2.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 12 · 逻辑 I</p><h1>Lecture 16：Logic I</h1><p class="subtitle">本章进入符号主义推理：逻辑语言、语法、语义、模型、满足、蕴涵、Horn 子句和 modus ponens。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 16 - Logic I.pdf</span></div><div class="meta-item"><b>所属模块</b><span>逻辑 I</span></div><div class="meta-item"><b>老师重点</b><span>语法和语义必须分清；逻辑推理不是感觉合理，而是形式化保证。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>逻辑 I</h2><p>本章进入符号主义推理：逻辑语言、语法、语义、模型、满足、蕴涵、Horn 子句和 modus ponens。</p></div><div><p><b>老师重点</b></p><p>语法和语义必须分清；逻辑推理不是感觉合理，而是形式化保证。</p></div></aside><div class="branches"><article class="branch searchable"><h3>逻辑与 AI 范式</h3><p class="summary">逻辑是符号表示和可解释推理的基础。</p><div class="node-grid"><div class="node searchable"><b>符号主义</b><small>用显式符号和规则表达知识。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>知识库 KB</b><small>已知事实和规则的集合。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>推理任务</b><small>判断结论是否由 KB 必然推出。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>概率对比</b><small>逻辑关注必然性，不是概率大小。</small><div class="tag-row"><span class="tag warn">易错点</span></div></div></div></article><article class="branch searchable"><h3>语法与语义</h3><p class="summary">语法规定怎么写，语义规定如何为真。</p><div class="node-grid"><div class="node searchable"><b>Syntax</b><small>合法公式构造规则。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>Semantics</b><small>公式在模型中的真假含义。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>命题符号</b><small>表示可真可假的基本陈述。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>连接词</b><small>¬,∧,∨,→ 等构造复杂命题。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>模型、满足与蕴涵</h3><p class="summary">用所有可能世界判断 KB 是否推出结论。</p><div class="node-grid"><div class="node searchable"><b>模型 Model</b><small>给命题符号赋真假的可能世界。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>满足</b><small>某模型让公式为真。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>蕴涵 KB⊨φ</b><small>所有满足 KB 的模型也满足 φ。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>可满足性</b><small>是否存在至少一个模型让公式为真。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>Horn 子句与 Modus Ponens</h3><p class="summary">规则形式知识可用前向推理推出新事实。</p><div class="node-grid"><div class="node searchable"><b>Horn 子句</b><small>最多一个正文字的子句。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>规则形式</b><small>A∧B→C。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>modus ponens</b><small>若 A 和 A→B，则推出 B。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>前向链推理</b><small>从事实出发不断触发规则。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. 逻辑与 AI 范式</h3><p>逻辑是符号表示和可解释推理的基础。</p>
+<h4>关键概念</h4><ul><li><b>符号主义</b>：用显式符号和规则表达知识。</li><li><b>知识库 KB</b>：已知事实和规则的集合。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>若下雨则地湿；已知下雨；推出地湿。</li></ul>
+<h4>老师强调点</h4><ul><li>逻辑是符号主义基础。</li></ul>
+<h4>易错点</h4><ul><li>易错：把逻辑蕴涵当成高概率。</li></ul>
+<h4>考试可能考法</h4><ul><li>说明逻辑推理任务。</li></ul></article><article class="struct-card searchable"><h3>2. 语法与语义</h3><p>语法规定怎么写，语义规定如何为真。</p>
+<h4>关键概念</h4><ul><li><b>Syntax</b>：合法公式构造规则。</li><li><b>Semantics</b>：公式在模型中的真假含义。</li><li><b>命题符号</b>：表示可真可假的基本陈述。</li><li><b>连接词</b>：¬,∧,∨,→ 等构造复杂命题。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>P→Q 是否为真取决于 P,Q 真假赋值。</li></ul>
+<h4>老师强调点</h4><ul><li>语法和语义是高频概念辨析。</li></ul>
+<h4>易错点</h4><ul><li>易错：写得合法不等于为真。</li></ul>
+<h4>考试可能考法</h4><ul><li>判断公式合法性和真假。</li></ul></article><article class="struct-card searchable"><h3>3. 模型、满足与蕴涵</h3><p>用所有可能世界判断 KB 是否推出结论。</p>
+<h4>关键概念</h4><ul><li><b>模型 Model</b>：给命题符号赋真假的可能世界。</li><li><b>满足</b>：某模型让公式为真。</li><li><b>可满足性</b>：是否存在至少一个模型让公式为真。</li></ul>
+<h4>公式/规则</h4><ul><li>KB ⊨ φ</li></ul>
+<h4>典型例子</h4><ul><li>所有让 KB 为真的模型中 φ 都真，则 KB 蕴涵 φ。</li></ul>
+<h4>老师强调点</h4><ul><li>满足和蕴涵必须分清。</li></ul>
+<h4>易错点</h4><ul><li>易错：满足是模型-公式关系，蕴涵是 KB-结论关系。</li></ul>
+<h4>考试可能考法</h4><ul><li>判断 KB 是否蕴涵 φ。</li></ul></article><article class="struct-card searchable"><h3>4. Horn 子句与 Modus Ponens</h3><p>规则形式知识可用前向推理推出新事实。</p>
+<h4>关键概念</h4><ul><li><b>Horn 子句</b>：最多一个正文字的子句。</li></ul>
+<h4>公式/规则</h4><ul><li>A, A→B ⟹ B</li></ul>
+<h4>典型例子</h4><ul><li>Rain 与 Rain→Wet 推出 Wet。</li></ul>
+<h4>老师强调点</h4><ul><li>推理规则要按形式使用。</li></ul>
+<h4>易错点</h4><ul><li>易错：不能凭直觉跳步。</li></ul>
+<h4>考试可能考法</h4><ul><li>用 modus ponens 推理。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>模型、满足与蕴涵</h3><span class="formula">KB ⊨ φ</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>Horn 子句与 Modus Ponens</h3><span class="formula">A, A→B ⟹ B</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>语法/语义</li><li>模型/满足/蕴涵</li><li>Horn</li><li>modus ponens</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>真值表</li><li>判断模型满足</li><li>前向推理</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>syntax、semantics、model、entailment、modus ponens</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>真假判断、蕴涵判断、规则推理</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>符号主义与连接主义区别</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>13 逻辑 II</b><a href="13_logic2.html">Lecture 17：Logic II</a></div><div class="relation-card"><b>01 绪论与智能体</b><a href="01_intro.html">第一讲：人工智能与类脑计算绪论</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 16：Logic I&quot;,
+  &quot;material&quot;: &quot;Lecture 16 - Logic I.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章进入符号主义推理：逻辑语言、语法、语义、模型、满足、蕴涵、Horn 子句和 modus ponens。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;逻辑与 AI 范式&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;逻辑是符号表示和可解释推理的基础。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;符号主义&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;用显式符号和规则表达知识。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;知识库 KB&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;已知事实和规则的集合。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;推理任务&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;判断结论是否由 KB 必然推出。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;概率对比&quot;,
+          &quot;kind&quot;: &quot;易错点&quot;,
+          &quot;desc&quot;: &quot;逻辑关注必然性，不是概率大小。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;若下雨则地湿；已知下雨；推出地湿。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;逻辑是符号主义基础。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：把逻辑蕴涵当成高概率。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;说明逻辑推理任务。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;语法与语义&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;语法规定怎么写，语义规定如何为真。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;Syntax&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;合法公式构造规则。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;Semantics&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;公式在模型中的真假含义。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;命题符号&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;表示可真可假的基本陈述。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;连接词&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;¬,∧,∨,→ 等构造复杂命题。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;P→Q 是否为真取决于 P,Q 真假赋值。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;语法和语义是高频概念辨析。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：写得合法不等于为真。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;判断公式合法性和真假。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;模型、满足与蕴涵&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用所有可能世界判断 KB 是否推出结论。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;模型 Model&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;给命题符号赋真假的可能世界。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;满足&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;某模型让公式为真。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;蕴涵 KB⊨φ&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;所有满足 KB 的模型也满足 φ。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;可满足性&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;是否存在至少一个模型让公式为真。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;KB ⊨ φ&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;所有让 KB 为真的模型中 φ 都真，则 KB 蕴涵 φ。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;满足和蕴涵必须分清。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：满足是模型-公式关系，蕴涵是 KB-结论关系。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;判断 KB 是否蕴涵 φ。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Horn 子句与 Modus Ponens&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;规则形式知识可用前向推理推出新事实。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;Horn 子句&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;最多一个正文字的子句。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;规则形式&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;A∧B→C。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;modus ponens&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;若 A 和 A→B，则推出 B。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;前向链推理&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;从事实出发不断触发规则。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;A, A→B ⟹ B&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;Rain 与 Rain→Wet 推出 Wet。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;推理规则要按形式使用。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：不能凭直觉跳步。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;用 modus ponens 推理。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;语法/语义&quot;,
+      &quot;模型/满足/蕴涵&quot;,
+      &quot;Horn&quot;,
+      &quot;modus ponens&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;真值表&quot;,
+      &quot;判断模型满足&quot;,
+      &quot;前向推理&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;syntax、semantics、model、entailment、modus ponens&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;真假判断、蕴涵判断、规则推理&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;符号主义与连接主义区别&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 16：Logic I
+
+本章核心主题：本章进入符号主义推理：逻辑语言、语法、语义、模型、满足、蕴涵、Horn 子句和 modus ponens。
+
+老师重点：语法和语义必须分清；逻辑推理不是感觉合理，而是形式化保证。
+
+## 1. 逻辑与 AI 范式
+
+### 1.1 二级知识点
+
+- 核心概念：逻辑是符号表示和可解释推理的基础。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：若下雨则地湿；已知下雨；推出地湿。
+- 老师重点：逻辑是符号主义基础。
+- 易错点：易错：把逻辑蕴涵当成高概率。
+- 考点：说明逻辑推理任务。
+
+### 1.2 符号主义
+
+- 类型：核心概念
+- 说明：用显式符号和规则表达知识。
+
+### 1.3 知识库 KB
+
+- 类型：核心概念
+- 说明：已知事实和规则的集合。
+
+### 1.4 推理任务
+
+- 类型：图示/流程
+- 说明：判断结论是否由 KB 必然推出。
+
+### 1.5 概率对比
+
+- 类型：易错点
+- 说明：逻辑关注必然性，不是概率大小。
+
+## 2. 语法与语义
+
+### 2.1 二级知识点
+
+- 核心概念：语法规定怎么写，语义规定如何为真。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：P→Q 是否为真取决于 P,Q 真假赋值。
+- 老师重点：语法和语义是高频概念辨析。
+- 易错点：易错：写得合法不等于为真。
+- 考点：判断公式合法性和真假。
+
+### 2.2 Syntax
+
+- 类型：核心概念
+- 说明：合法公式构造规则。
+
+### 2.3 Semantics
+
+- 类型：核心概念
+- 说明：公式在模型中的真假含义。
+
+### 2.4 命题符号
+
+- 类型：核心概念
+- 说明：表示可真可假的基本陈述。
+
+### 2.5 连接词
+
+- 类型：核心概念
+- 说明：¬,∧,∨,→ 等构造复杂命题。
+
+## 3. 模型、满足与蕴涵
+
+### 3.1 二级知识点
+
+- 核心概念：用所有可能世界判断 KB 是否推出结论。
+- 公式/规则：KB ⊨ φ
+- 典型例子：所有让 KB 为真的模型中 φ 都真，则 KB 蕴涵 φ。
+- 老师重点：满足和蕴涵必须分清。
+- 易错点：易错：满足是模型-公式关系，蕴涵是 KB-结论关系。
+- 考点：判断 KB 是否蕴涵 φ。
+
+### 3.2 模型 Model
+
+- 类型：核心概念
+- 说明：给命题符号赋真假的可能世界。
+
+### 3.3 满足
+
+- 类型：核心概念
+- 说明：某模型让公式为真。
+
+### 3.4 蕴涵 KB⊨φ
+
+- 类型：公式/推导
+- 说明：所有满足 KB 的模型也满足 φ。
+
+### 3.5 可满足性
+
+- 类型：核心概念
+- 说明：是否存在至少一个模型让公式为真。
+
+## 4. Horn 子句与 Modus Ponens
+
+### 4.1 二级知识点
+
+- 核心概念：规则形式知识可用前向推理推出新事实。
+- 公式/规则：A, A→B ⟹ B
+- 典型例子：Rain 与 Rain→Wet 推出 Wet。
+- 老师重点：推理规则要按形式使用。
+- 易错点：易错：不能凭直觉跳步。
+- 考点：用 modus ponens 推理。
+
+### 4.2 Horn 子句
+
+- 类型：核心概念
+- 说明：最多一个正文字的子句。
+
+### 4.3 规则形式
+
+- 类型：图示/流程
+- 说明：A∧B→C。
+
+### 4.4 modus ponens
+
+- 类型：公式/推导
+- 说明：若 A 和 A→B，则推出 B。
+
+### 4.5 前向链推理
+
+- 类型：图示/流程
+- 说明：从事实出发不断触发规则。
+
+## 复习路线
+
+- 20 分钟：语法/语义；模型/满足/蕴涵；Horn；modus ponens
+- 1 小时：真值表；判断模型满足；前向推理
+- 必背：syntax、semantics、model、entailment、modus ponens
+- 需要做题：真假判断、蕴涵判断、规则推理
+- 理解即可：符号主义与连接主义区别</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 16：Logic I</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>

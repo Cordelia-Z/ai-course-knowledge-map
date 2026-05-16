@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lecture 11：CSPs I｜详细思维导图</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script></head><body>
+<nav class="topbar"><div class="brand"><strong>AI COURSE CHAPTER MAP</strong><span>中文：宋体｜English & Numbers：Times New Roman｜可打印 HTML</span></div><div class="nav"><input id="pageSearch" class="search" placeholder="搜索本页节点…"><a href="../overview.html">课程总览</a><a href="../index.html">索引</a><a href="07_rl.html">← 上一章</a><a href="09_csp2.html">下一章 →</a></div></nav>
+<main class="page"><header class="hero"><section><p class="eyebrow">CHAPTER 08 · CSP I</p><h1>Lecture 11：CSPs I</h1><p class="subtitle">本章从状态模型转向变量模型，用变量、取值域和约束/因子描述问题，并用回溯、动态排序、前向检查和 AC-3 剪枝。</p><div class="tag-row"><span class="tag core">详细思维导图</span><span class="tag flow">层级结构</span><span class="tag formulaTag">JSON 数据</span><span class="tag exam">Markdown 文字版</span></div></section><aside class="meta-panel"><div class="meta-grid"><div class="meta-item"><b>对应资料</b><span>Lecture 11 - CSPs I.pdf</span></div><div class="meta-item"><b>所属模块</b><span>CSP I</span></div><div class="meta-item"><b>老师重点</b><span>CSP 不是暴力枚举，而是利用变量与约束结构减少搜索空间。</span></div><div class="meta-item"><b>复习目标</b><span>能讲概念、会用公式、能做题、能辨易错点。</span></div></div></aside></header>
+<section class="content"><div class="section-title"><h2>一、本章可视化思维导图</h2><p>左侧是核心主题，右侧是归纳后的一级知识点和关键节点。</p></div><section class="mindmap"><aside class="root-card"><div><h2>CSP I</h2><p>本章从状态模型转向变量模型，用变量、取值域和约束/因子描述问题，并用回溯、动态排序、前向检查和 AC-3 剪枝。</p></div><div><p><b>老师重点</b></p><p>CSP 不是暴力枚举，而是利用变量与约束结构减少搜索空间。</p></div></aside><div class="branches"><article class="branch searchable"><h3>CSP 三要素</h3><p class="summary">把求解问题拆成多个变量的赋值问题。</p><div class="node-grid"><div class="node searchable"><b>变量</b><small>需要被赋值的对象。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>取值域</b><small>每个变量的候选值集合。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>约束/因子</b><small>限制变量组合是否合法或有多大权重。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>完整赋值</b><small>所有变量都被赋值且满足约束。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article><article class="branch searchable"><h3>因子图与权重</h3><p class="summary">用图结构表示变量之间的约束关系。</p><div class="node-grid"><div class="node searchable"><b>变量节点</b><small>图中表示待赋值变量。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>因子节点</b><small>表示约束或权重函数。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>赋值权重</b><small>完整赋值权重通常是因子乘积。</small><div class="tag-row"><span class="tag formulaTag">公式/推导</span></div></div><div class="node searchable"><b>地图着色</b><small>二元约束的标准例子。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>回溯搜索</h3><p class="summary">逐个变量赋值，发现冲突就撤回。</p><div class="node-grid"><div class="node searchable"><b>递归赋值</b><small>每层选择变量并尝试值。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>冲突检测</b><small>违反约束就停止展开。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>动态排序</b><small>优先选更受约束或剩余值更少的变量。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>搜索树</b><small>变量和值的选择形成分支树。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div></div></article><article class="branch searchable"><h3>前向检查与 AC-3</h3><p class="summary">提前删除不可能的取值。</p><div class="node-grid"><div class="node searchable"><b>前向检查</b><small>赋值后删除邻居不兼容值。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>弧一致性</b><small>每个取值在邻居变量中都有支持。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div><div class="node searchable"><b>AC-3</b><small>反复检查弧并删除无支持取值。</small><div class="tag-row"><span class="tag flow">图示/流程</span></div></div><div class="node searchable"><b>剪枝</b><small>不丢解地减少候选空间。</small><div class="tag-row"><span class="tag core">核心概念</span></div></div></div></article></div></section>
+<div class="section-title"><h2>二、层级知识结构</h2><p>按“一级知识点 → 概念/公式/例子/重点/易错/考点”整理。</p></div><section class="structure"><article class="struct-card searchable"><h3>1. CSP 三要素</h3><p>把求解问题拆成多个变量的赋值问题。</p>
+<h4>关键概念</h4><ul><li><b>变量</b>：需要被赋值的对象。</li><li><b>取值域</b>：每个变量的候选值集合。</li><li><b>约束/因子</b>：限制变量组合是否合法或有多大权重。</li><li><b>完整赋值</b>：所有变量都被赋值且满足约束。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>地图着色：变量是地区，值是颜色，约束是相邻不同色。</li></ul>
+<h4>老师强调点</h4><ul><li>建模题必须写变量、域、约束。</li></ul>
+<h4>易错点</h4><ul><li>易错：只说约束，不写变量和域。</li></ul>
+<h4>考试可能考法</h4><ul><li>把现实问题建成 CSP。</li></ul></article><article class="struct-card searchable"><h3>2. 因子图与权重</h3><p>用图结构表示变量之间的约束关系。</p>
+<h4>关键概念</h4><ul><li><b>变量节点</b>：图中表示待赋值变量。</li><li><b>因子节点</b>：表示约束或权重函数。</li></ul>
+<h4>公式/规则</h4><ul><li>Weight(x)=∏ factors(x)</li></ul>
+<h4>典型例子</h4><ul><li>相邻地区同色时因子返回 0。</li></ul>
+<h4>老师强调点</h4><ul><li>因子图思想会和 BN/HMM 形成联系。</li></ul>
+<h4>易错点</h4><ul><li>易错：因子图不是有向概率图。</li></ul>
+<h4>考试可能考法</h4><ul><li>画因子图。</li></ul></article><article class="struct-card searchable"><h3>3. 回溯搜索</h3><p>逐个变量赋值，发现冲突就撤回。</p>
+<h4>关键概念</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>公式/规则</h4><ul><li>本项不作为单独节点展开。</li></ul>
+<h4>典型例子</h4><ul><li>先给约束最多的地区上色。</li></ul>
+<h4>老师强调点</h4><ul><li>变量顺序影响搜索效率。</li></ul>
+<h4>易错点</h4><ul><li>易错：搜索不是固定顺序枚举。</li></ul>
+<h4>考试可能考法</h4><ul><li>手推回溯过程。</li></ul></article><article class="struct-card searchable"><h3>4. 前向检查与 AC-3</h3><p>提前删除不可能的取值。</p>
+<h4>关键概念</h4><ul><li><b>弧一致性</b>：每个取值在邻居变量中都有支持。</li><li><b>剪枝</b>：不丢解地减少候选空间。</li></ul>
+<h4>公式/规则</h4><ul><li>若某取值无支持，则删除</li></ul>
+<h4>典型例子</h4><ul><li>A=红，则邻居 B 不能取红。</li></ul>
+<h4>老师强调点</h4><ul><li>AC-3 主要删值，不是直接求完整解。</li></ul>
+<h4>易错点</h4><ul><li>易错：AC-3 后可能仍需搜索。</li></ul>
+<h4>考试可能考法</h4><ul><li>手推 AC-3 删除取值。</li></ul></article></section>
+<div class="section-title"><h2>三、公式与流程抓手</h2><p>本章最适合考前快速回忆的公式、规则或流程。</p></div><section class="formula-list"><article class="formula-card searchable"><h3>因子图与权重</h3><span class="formula">Weight(x)=∏ factors(x)</span><p>用于本章公式、规则或流程快速回忆。</p></article><article class="formula-card searchable"><h3>前向检查与 AC-3</h3><span class="formula">若某取值无支持，则删除</span><p>用于本章公式、规则或流程快速回忆。</p></article></section>
+<div class="section-title"><h2>四、复习路线</h2><p>按照剩余时间分层复习。</p></div><section class="card-grid">
+<article class="info-card"><h3>只有 20 分钟</h3><ul><li>变量/域/约束</li><li>因子图</li><li>回溯</li><li>AC-3</li></ul></article><article class="info-card"><h3>有 1 小时</h3><ul><li>地图着色建模</li><li>画因子图</li><li>手推 AC-3</li></ul></article><article class="info-card"><h3>考试必须背</h3><ul><li>CSP 三要素、因子图、回溯、AC-3</li></ul></article><article class="info-card"><h3>需要做题掌握</h3><ul><li>CSP 建模、因子图、AC-3</li></ul></article><article class="info-card"><h3>理解即可</h3><ul><li>动态排序为什么有效</li></ul></article><article class="info-card"><h3>关联章节</h3><div class="relation-grid"><div class="relation-card"><b>09 CSP II</b><a href="09_csp2.html">Lecture 12：CSPs II</a></div><div class="relation-card"><b>10 贝叶斯网络 I</b><a href="10_bn1.html">Lecture 13：Bayesian Networks I</a></div><div class="relation-card"><b>13 逻辑 II</b><a href="13_logic2.html">Lecture 17：Logic II</a></div></div></article></section>
+<details><summary>五、适合可视化的数据结构 JSON</summary><pre>{
+  &quot;title&quot;: &quot;Lecture 11：CSPs I&quot;,
+  &quot;material&quot;: &quot;Lecture 11 - CSPs I.pdf&quot;,
+  &quot;core_theme&quot;: &quot;本章从状态模型转向变量模型，用变量、取值域和约束/因子描述问题，并用回溯、动态排序、前向检查和 AC-3 剪枝。&quot;,
+  &quot;nodes&quot;: [
+    {
+      &quot;name&quot;: &quot;CSP 三要素&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;把求解问题拆成多个变量的赋值问题。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;变量&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;需要被赋值的对象。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;取值域&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;每个变量的候选值集合。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;约束/因子&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;限制变量组合是否合法或有多大权重。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;完整赋值&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;所有变量都被赋值且满足约束。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;地图着色：变量是地区，值是颜色，约束是相邻不同色。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;建模题必须写变量、域、约束。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：只说约束，不写变量和域。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;把现实问题建成 CSP。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;因子图与权重&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;用图结构表示变量之间的约束关系。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;变量节点&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;图中表示待赋值变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;因子节点&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;表示约束或权重函数。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;赋值权重&quot;,
+          &quot;kind&quot;: &quot;公式/推导&quot;,
+          &quot;desc&quot;: &quot;完整赋值权重通常是因子乘积。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;地图着色&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;二元约束的标准例子。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;Weight(x)=∏ factors(x)&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;相邻地区同色时因子返回 0。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;因子图思想会和 BN/HMM 形成联系。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：因子图不是有向概率图。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;画因子图。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;回溯搜索&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;逐个变量赋值，发现冲突就撤回。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;递归赋值&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;每层选择变量并尝试值。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;冲突检测&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;违反约束就停止展开。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;动态排序&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;优先选更受约束或剩余值更少的变量。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;搜索树&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;变量和值的选择形成分支树。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [],
+      &quot;examples&quot;: [
+        &quot;先给约束最多的地区上色。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;变量顺序影响搜索效率。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：搜索不是固定顺序枚举。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;手推回溯过程。&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;前向检查与 AC-3&quot;,
+      &quot;type&quot;: &quot;一级知识点&quot;,
+      &quot;summary&quot;: &quot;提前删除不可能的取值。&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;name&quot;: &quot;前向检查&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;赋值后删除邻居不兼容值。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;弧一致性&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;每个取值在邻居变量中都有支持。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;AC-3&quot;,
+          &quot;kind&quot;: &quot;图示/流程&quot;,
+          &quot;desc&quot;: &quot;反复检查弧并删除无支持取值。&quot;
+        },
+        {
+          &quot;name&quot;: &quot;剪枝&quot;,
+          &quot;kind&quot;: &quot;核心概念&quot;,
+          &quot;desc&quot;: &quot;不丢解地减少候选空间。&quot;
+        }
+      ],
+      &quot;formulas&quot;: [
+        &quot;若某取值无支持，则删除&quot;
+      ],
+      &quot;examples&quot;: [
+        &quot;A=红，则邻居 B 不能取红。&quot;
+      ],
+      &quot;teacher_focus&quot;: [
+        &quot;AC-3 主要删值，不是直接求完整解。&quot;
+      ],
+      &quot;pitfalls&quot;: [
+        &quot;易错：AC-3 后可能仍需搜索。&quot;
+      ],
+      &quot;exam&quot;: [
+        &quot;手推 AC-3 删除取值。&quot;
+      ]
+    }
+  ],
+  &quot;review_route&quot;: {
+    &quot;20min&quot;: [
+      &quot;变量/域/约束&quot;,
+      &quot;因子图&quot;,
+      &quot;回溯&quot;,
+      &quot;AC-3&quot;
+    ],
+    &quot;1hour&quot;: [
+      &quot;地图着色建模&quot;,
+      &quot;画因子图&quot;,
+      &quot;手推 AC-3&quot;
+    ],
+    &quot;must&quot;: [
+      &quot;CSP 三要素、因子图、回溯、AC-3&quot;
+    ],
+    &quot;practice&quot;: [
+      &quot;CSP 建模、因子图、AC-3&quot;
+    ],
+    &quot;understand&quot;: [
+      &quot;动态排序为什么有效&quot;
+    ]
+  }
+}</pre></details>
+<details><summary>六、纯文字版 Markdown 思维导图</summary><pre># Lecture 11：CSPs I
+
+本章核心主题：本章从状态模型转向变量模型，用变量、取值域和约束/因子描述问题，并用回溯、动态排序、前向检查和 AC-3 剪枝。
+
+老师重点：CSP 不是暴力枚举，而是利用变量与约束结构减少搜索空间。
+
+## 1. CSP 三要素
+
+### 1.1 二级知识点
+
+- 核心概念：把求解问题拆成多个变量的赋值问题。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：地图着色：变量是地区，值是颜色，约束是相邻不同色。
+- 老师重点：建模题必须写变量、域、约束。
+- 易错点：易错：只说约束，不写变量和域。
+- 考点：把现实问题建成 CSP。
+
+### 1.2 变量
+
+- 类型：核心概念
+- 说明：需要被赋值的对象。
+
+### 1.3 取值域
+
+- 类型：核心概念
+- 说明：每个变量的候选值集合。
+
+### 1.4 约束/因子
+
+- 类型：核心概念
+- 说明：限制变量组合是否合法或有多大权重。
+
+### 1.5 完整赋值
+
+- 类型：核心概念
+- 说明：所有变量都被赋值且满足约束。
+
+## 2. 因子图与权重
+
+### 2.1 二级知识点
+
+- 核心概念：用图结构表示变量之间的约束关系。
+- 公式/规则：Weight(x)=∏ factors(x)
+- 典型例子：相邻地区同色时因子返回 0。
+- 老师重点：因子图思想会和 BN/HMM 形成联系。
+- 易错点：易错：因子图不是有向概率图。
+- 考点：画因子图。
+
+### 2.2 变量节点
+
+- 类型：核心概念
+- 说明：图中表示待赋值变量。
+
+### 2.3 因子节点
+
+- 类型：核心概念
+- 说明：表示约束或权重函数。
+
+### 2.4 赋值权重
+
+- 类型：公式/推导
+- 说明：完整赋值权重通常是因子乘积。
+
+### 2.5 地图着色
+
+- 类型：图示/流程
+- 说明：二元约束的标准例子。
+
+## 3. 回溯搜索
+
+### 3.1 二级知识点
+
+- 核心概念：逐个变量赋值，发现冲突就撤回。
+- 公式/规则：本节以概念/流程为主
+- 典型例子：先给约束最多的地区上色。
+- 老师重点：变量顺序影响搜索效率。
+- 易错点：易错：搜索不是固定顺序枚举。
+- 考点：手推回溯过程。
+
+### 3.2 递归赋值
+
+- 类型：图示/流程
+- 说明：每层选择变量并尝试值。
+
+### 3.3 冲突检测
+
+- 类型：图示/流程
+- 说明：违反约束就停止展开。
+
+### 3.4 动态排序
+
+- 类型：图示/流程
+- 说明：优先选更受约束或剩余值更少的变量。
+
+### 3.5 搜索树
+
+- 类型：图示/流程
+- 说明：变量和值的选择形成分支树。
+
+## 4. 前向检查与 AC-3
+
+### 4.1 二级知识点
+
+- 核心概念：提前删除不可能的取值。
+- 公式/规则：若某取值无支持，则删除
+- 典型例子：A=红，则邻居 B 不能取红。
+- 老师重点：AC-3 主要删值，不是直接求完整解。
+- 易错点：易错：AC-3 后可能仍需搜索。
+- 考点：手推 AC-3 删除取值。
+
+### 4.2 前向检查
+
+- 类型：图示/流程
+- 说明：赋值后删除邻居不兼容值。
+
+### 4.3 弧一致性
+
+- 类型：核心概念
+- 说明：每个取值在邻居变量中都有支持。
+
+### 4.4 AC-3
+
+- 类型：图示/流程
+- 说明：反复检查弧并删除无支持取值。
+
+### 4.5 剪枝
+
+- 类型：核心概念
+- 说明：不丢解地减少候选空间。
+
+## 复习路线
+
+- 20 分钟：变量/域/约束；因子图；回溯；AC-3
+- 1 小时：地图着色建模；画因子图；手推 AC-3
+- 必背：CSP 三要素、因子图、回溯、AC-3
+- 需要做题：CSP 建模、因子图、AC-3
+- 理解即可：动态排序为什么有效</pre></details></section><footer class="footer"><span>AI 与类脑计算课程复习包 · Lecture 11：CSPs I</span><span>建议浏览器打印选择 A3 横向；或保存 PDF 后二次标注。</span></footer></main></body></html>
